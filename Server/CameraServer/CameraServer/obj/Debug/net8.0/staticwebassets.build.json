@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "lFWWlo974Rtdk6ZY2IG9r7WdpURPLoO2K3SSFhW8oK4=",
+  "Source": "CameraServer",
+  "BasePath": "_content/CameraServer",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "CameraServer\\wwwroot",
+      "Source": "CameraServer",
+      "ContentRoot": "D:\\WorkSpace\\Projects\\CameraSimulator\\Server\\CameraServer\\CameraServer\\wwwroot\\",
+      "BasePath": "_content/CameraServer",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}
