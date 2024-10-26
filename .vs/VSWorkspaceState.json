@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Server",
+    "\\Server\\CameraServer",
+    "\\Server\\CameraServer\\CameraServer",
+    "\\Server\\CameraServer\\CameraServer\\Controllers"
+  ],
+  "SelectedNode": "\\Server\\CameraServer\\CameraServer.sln",
+  "PreviewInSolutionExplorer": false
+}
