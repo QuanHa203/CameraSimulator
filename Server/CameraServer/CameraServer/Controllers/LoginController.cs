@@ -31,6 +31,7 @@ namespace CameraServer.Controllers
             var body = new
             {
                 IdRole = user.IdRole,
+
                 UserName = user.UserName,
                 Email = user.Email,
                 IsBan = user.IsBan,              
@@ -40,6 +41,7 @@ namespace CameraServer.Controllers
             return Ok(body);
            
         }
+
 
 
 
