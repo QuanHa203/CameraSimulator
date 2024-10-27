@@ -123,7 +123,7 @@
             lb.TabIndex = 8;
             lb.Text = "Create Account\r\n";
             // 
-            // Login
+            // LoginForm
             // 
             AutoScaleDimensions = new SizeF(10F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -141,9 +141,10 @@
             ForeColor = Color.FromArgb(164, 165, 169);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4, 3, 4, 3);
-            Name = "Login";
+            Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
+            Load += LoginForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

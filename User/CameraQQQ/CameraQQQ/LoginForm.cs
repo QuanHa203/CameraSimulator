@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace CameraQQQ
 {
-    
+
     public partial class LoginForm : Form
     {
         public static UserLogin userLogin;
@@ -75,6 +75,11 @@ namespace CameraQQQ
                 }
 
             }
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
