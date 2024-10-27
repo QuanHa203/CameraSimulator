@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "lFWWlo974Rtdk6ZY2IG9r7WdpURPLoO2K3SSFhW8oK4=",
+  "Hash": "lLgBLgXBmaF2CXa4lDnW84Ar7elUQHCzLTGzAaI3s4c=",
   "Source": "CameraServer",
   "BasePath": "_content/CameraServer",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "CameraServer\\wwwroot",
       "Source": "CameraServer",
-      "ContentRoot": "D:\\WorkSpace\\Projects\\CameraSimulator\\Server\\CameraServer\\CameraServer\\wwwroot\\",
+      "ContentRoot": "E:\\CameraSimulator\\Server\\CameraServer\\CameraServer\\wwwroot\\",
       "BasePath": "_content/CameraServer",
       "Pattern": "**"
     }
