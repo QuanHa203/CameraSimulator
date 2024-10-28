@@ -81,5 +81,10 @@ namespace CameraQQQ
         {
 
         }
+
+        private void lbAcc_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

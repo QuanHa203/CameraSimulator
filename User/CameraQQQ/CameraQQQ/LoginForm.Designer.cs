@@ -35,7 +35,7 @@
             label3 = new Label();
             btnLogin = new Button();
             label4 = new Label();
-            lb = new Label();
+            lbAcc = new Label();
             SuspendLayout();
             // 
             // label1
@@ -112,16 +112,17 @@
             label4.TabIndex = 7;
             label4.Text = "Don't Have an Account";
             // 
-            // lb
+            // lbAcc
             // 
-            lb.AutoSize = true;
-            lb.Cursor = Cursors.Hand;
-            lb.ForeColor = Color.FromArgb(116, 86, 174);
-            lb.Location = new Point(84, 456);
-            lb.Name = "lb";
-            lb.Size = new Size(132, 23);
-            lb.TabIndex = 8;
-            lb.Text = "Create Account\r\n";
+            lbAcc.AutoSize = true;
+            lbAcc.Cursor = Cursors.Hand;
+            lbAcc.ForeColor = Color.FromArgb(116, 86, 174);
+            lbAcc.Location = new Point(84, 456);
+            lbAcc.Name = "lbAcc";
+            lbAcc.Size = new Size(132, 23);
+            lbAcc.TabIndex = 8;
+            lbAcc.Text = "Create Account\r\n";
+            lbAcc.Click += lbAcc_Click;
             // 
             // LoginForm
             // 
@@ -129,7 +130,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(300, 544);
-            Controls.Add(lb);
+            Controls.Add(lbAcc);
             Controls.Add(label4);
             Controls.Add(btnLogin);
             Controls.Add(txtPassword);
@@ -158,5 +159,6 @@
         private Button btnLogin;
         private Label label4;
         private Label lb;
+        private Label lbAcc;
     }
 }
