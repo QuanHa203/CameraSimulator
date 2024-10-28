@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\WorkSpace\\Projects\\CameraSimulator\\Server\\CameraServer\\CameraServer\\CameraServer.csproj": {}
+    "D:\\GITHUB\\REPOS\\CameraSimulator\\Server\\CameraServer\\CameraServer\\CameraServer.csproj": {}
   },
   "projects": {
-    "D:\\WorkSpace\\Projects\\CameraSimulator\\Server\\CameraServer\\CameraServer\\CameraServer.csproj": {
+    "D:\\GITHUB\\REPOS\\CameraSimulator\\Server\\CameraServer\\CameraServer\\CameraServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\WorkSpace\\Projects\\CameraSimulator\\Server\\CameraServer\\CameraServer\\CameraServer.csproj",
+        "projectUniqueName": "D:\\GITHUB\\REPOS\\CameraSimulator\\Server\\CameraServer\\CameraServer\\CameraServer.csproj",
         "projectName": "CameraServer",
-        "projectPath": "D:\\WorkSpace\\Projects\\CameraSimulator\\Server\\CameraServer\\CameraServer\\CameraServer.csproj",
-        "packagesPath": "C:\\Users\\haqua\\.nuget\\packages\\",
-        "outputPath": "D:\\WorkSpace\\Projects\\CameraSimulator\\Server\\CameraServer\\CameraServer\\obj\\",
+        "projectPath": "D:\\GITHUB\\REPOS\\CameraSimulator\\Server\\CameraServer\\CameraServer\\CameraServer.csproj",
+        "packagesPath": "C:\\Users\\My Computer\\.nuget\\packages\\",
+        "outputPath": "D:\\GITHUB\\REPOS\\CameraSimulator\\Server\\CameraServer\\CameraServer\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\haqua\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\My Computer\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -39,17 +34,20 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.10, )"
@@ -64,6 +62,12 @@
               "target": "Package",
               "version": "[8.0.10, )"
             },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
             "Microsoft.EntityFrameworkCore.Tools.DotNet": {
               "target": "Package",
               "version": "[2.0.3, )"
@@ -75,6 +79,10 @@
             "Microsoft.Extensions.Logging.Console": {
               "target": "Package",
               "version": "[8.0.1, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[8.0.6, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -104,7 +112,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

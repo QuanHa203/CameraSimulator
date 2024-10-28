@@ -1,6 +1,13 @@
 using CameraServer.Models;
+using Microsoft.AspNetCore.Hosting.Server;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using CameraServer.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<CameraServerContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("CameraServerContext") ?? throw new InvalidOperationException("Connection string 'CameraServerContext' not found.")));
+
 
 // Add services to the container.
 
