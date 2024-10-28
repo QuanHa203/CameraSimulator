@@ -27,7 +27,8 @@ public partial class CameraSimulatorContext : DbContext
     public virtual DbSet<Video> Videos { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Data Source=LAPTOP-MOMOM02I\\QUANGLE;User ID=sa;Password=quangvip63;Connect Timeout=30;Encrypt=True;TrustServerCertificate=True;Database=CameraSimulator");
+
+        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-3TKOLCA;User ID=DBManager;Password=270603;Connect Timeout=30;Encrypt=True;TrustServerCertificate=True;Database=CameraSimulator");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

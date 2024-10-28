@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #client-screen {
+            position: relative;
+            width: 100%;
+            border: 1px solid #ccc;
+        }
+
+        #client-screen>#camera-video-stream {
+            width: 100%;
+            height: 100%;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="client-screen">
+            <video id="camera-video-stream" autoplay playsinline></video>
+        </div>
+    </div>
+    <script src="./P2Pconnection.js"></script>
+</body>
+</html>

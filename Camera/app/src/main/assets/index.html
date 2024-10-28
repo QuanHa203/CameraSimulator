@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #client-screen {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            /* Chiếm toàn bộ chiều cao của viewport */
+            overflow: hidden;
+        }
+
+        #client-screen>#local-video-stream {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Đảm bảo video phủ toàn bộ */
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="client-screen">
+        <video id="local-video-stream" muted autoplay></video>
+    </div>
+
+    <script src="./P2Pconnection.js"></script>
+</body>
+
+</html>

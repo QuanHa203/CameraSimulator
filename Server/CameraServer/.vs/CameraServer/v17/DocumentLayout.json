@@ -3,16 +3,32 @@
   "WorkspaceRootPath": "D:\\WorkSpace\\Projects\\CameraSimulator\\Server\\CameraServer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CE1BEF2E-FEB4-44A5-80FD-1A3EBE092680}|CameraServer\\CameraServer.csproj|d:\\workspace\\projects\\camerasimulator\\server\\cameraserver\\cameraserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CE1BEF2E-FEB4-44A5-80FD-1A3EBE092680}|CameraServer\\CameraServer.csproj|solutionrelative:cameraserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{CE1BEF2E-FEB4-44A5-80FD-1A3EBE092680}|CameraServer\\CameraServer.csproj|d:\\workspace\\projects\\camerasimulator\\server\\cameraserver\\cameraserver\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CE1BEF2E-FEB4-44A5-80FD-1A3EBE092680}|CameraServer\\CameraServer.csproj|solutionrelative:cameraserver\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{CE1BEF2E-FEB4-44A5-80FD-1A3EBE092680}|CameraServer\\CameraServer.csproj|d:\\workspace\\projects\\camerasimulator\\server\\cameraserver\\cameraserver\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE1BEF2E-FEB4-44A5-80FD-1A3EBE092680}|CameraServer\\CameraServer.csproj|solutionrelative:cameraserver\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE1BEF2E-FEB4-44A5-80FD-1A3EBE092680}|CameraServer\\CameraServer.csproj|d:\\workspace\\projects\\camerasimulator\\server\\cameraserver\\cameraserver\\models\\camerauser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE1BEF2E-FEB4-44A5-80FD-1A3EBE092680}|CameraServer\\CameraServer.csproj|solutionrelative:cameraserver\\models\\camerauser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CE1BEF2E-FEB4-44A5-80FD-1A3EBE092680}|CameraServer\\CameraServer.csproj|d:\\workspace\\projects\\camerasimulator\\server\\cameraserver\\cameraserver\\models\\camerasimulatorcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CE1BEF2E-FEB4-44A5-80FD-1A3EBE092680}|CameraServer\\CameraServer.csproj|solutionrelative:cameraserver\\models\\camerasimulatorcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE1BEF2E-FEB4-44A5-80FD-1A3EBE092680}|CameraServer\\CameraServer.csproj|d:\\workspace\\projects\\camerasimulator\\server\\cameraserver\\cameraserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE1BEF2E-FEB4-44A5-80FD-1A3EBE092680}|CameraServer\\CameraServer.csproj|solutionrelative:cameraserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE1BEF2E-FEB4-44A5-80FD-1A3EBE092680}|CameraServer\\CameraServer.csproj|d:\\workspace\\projects\\camerasimulator\\server\\cameraserver\\cameraserver\\models\\camera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE1BEF2E-FEB4-44A5-80FD-1A3EBE092680}|CameraServer\\CameraServer.csproj|solutionrelative:cameraserver\\models\\camera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE1BEF2E-FEB4-44A5-80FD-1A3EBE092680}|CameraServer\\CameraServer.csproj|d:\\workspace\\projects\\camerasimulator\\server\\cameraserver\\cameraserver\\models\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE1BEF2E-FEB4-44A5-80FD-1A3EBE092680}|CameraServer\\CameraServer.csproj|solutionrelative:cameraserver\\models\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,40 +62,89 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CameraSimulatorContext.cs",
-              "DocumentMoniker": "D:\\WorkSpace\\Projects\\CameraSimulator\\Server\\CameraServer\\CameraServer\\Models\\CameraSimulatorContext.cs",
-              "RelativeDocumentMoniker": "CameraServer\\Models\\CameraSimulatorContext.cs",
-              "ToolTip": "D:\\WorkSpace\\Projects\\CameraSimulator\\Server\\CameraServer\\CameraServer\\Models\\CameraSimulatorContext.cs",
-              "RelativeToolTip": "CameraServer\\Models\\CameraSimulatorContext.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T15:10:50.839Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "WeatherForecastController.cs",
               "DocumentMoniker": "D:\\WorkSpace\\Projects\\CameraSimulator\\Server\\CameraServer\\CameraServer\\Controllers\\WeatherForecastController.cs",
               "RelativeDocumentMoniker": "CameraServer\\Controllers\\WeatherForecastController.cs",
               "ToolTip": "D:\\WorkSpace\\Projects\\CameraSimulator\\Server\\CameraServer\\CameraServer\\Controllers\\WeatherForecastController.cs",
               "RelativeToolTip": "CameraServer\\Controllers\\WeatherForecastController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAACEAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T15:09:57.641Z",
+              "WhenOpened": "2024-10-27T10:43:08.352Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
+              "Title": "CameraSimulatorContext.cs",
+              "DocumentMoniker": "D:\\WorkSpace\\Projects\\CameraSimulator\\Server\\CameraServer\\CameraServer\\Models\\CameraSimulatorContext.cs",
+              "RelativeDocumentMoniker": "CameraServer\\Models\\CameraSimulatorContext.cs",
+              "ToolTip": "D:\\WorkSpace\\Projects\\CameraSimulator\\Server\\CameraServer\\CameraServer\\Models\\CameraSimulatorContext.cs",
+              "RelativeToolTip": "CameraServer\\Models\\CameraSimulatorContext.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-24T04:28:06.93Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Camera.cs",
+              "DocumentMoniker": "D:\\WorkSpace\\Projects\\CameraSimulator\\Server\\CameraServer\\CameraServer\\Models\\Camera.cs",
+              "RelativeDocumentMoniker": "CameraServer\\Models\\Camera.cs",
+              "ToolTip": "D:\\WorkSpace\\Projects\\CameraSimulator\\Server\\CameraServer\\CameraServer\\Models\\Camera.cs",
+              "RelativeToolTip": "CameraServer\\Models\\Camera.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-24T04:28:05.634Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CameraUser.cs",
+              "DocumentMoniker": "D:\\WorkSpace\\Projects\\CameraSimulator\\Server\\CameraServer\\CameraServer\\Models\\CameraUser.cs",
+              "RelativeDocumentMoniker": "CameraServer\\Models\\CameraUser.cs",
+              "ToolTip": "D:\\WorkSpace\\Projects\\CameraSimulator\\Server\\CameraServer\\CameraServer\\Models\\CameraUser.cs",
+              "RelativeToolTip": "CameraServer\\Models\\CameraUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-24T04:26:42.361Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Role.cs",
+              "DocumentMoniker": "D:\\WorkSpace\\Projects\\CameraSimulator\\Server\\CameraServer\\CameraServer\\Models\\Role.cs",
+              "RelativeDocumentMoniker": "CameraServer\\Models\\Role.cs",
+              "ToolTip": "D:\\WorkSpace\\Projects\\CameraSimulator\\Server\\CameraServer\\CameraServer\\Models\\Role.cs",
+              "RelativeToolTip": "CameraServer\\Models\\Role.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T16:29:20.293Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\WorkSpace\\Projects\\CameraSimulator\\Server\\CameraServer\\CameraServer\\Program.cs",
               "RelativeDocumentMoniker": "CameraServer\\Program.cs",
               "ToolTip": "D:\\WorkSpace\\Projects\\CameraSimulator\\Server\\CameraServer\\CameraServer\\Program.cs",
               "RelativeToolTip": "CameraServer\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-17T16:28:05.194Z",
+              "WhenOpened": "2024-10-23T15:11:48.612Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\WorkSpace\\Projects\\CameraSimulator\\Server\\CameraServer\\CameraServer\\Models\\User.cs",
+              "RelativeDocumentMoniker": "CameraServer\\Models\\User.cs",
+              "ToolTip": "D:\\WorkSpace\\Projects\\CameraSimulator\\Server\\CameraServer\\CameraServer\\Models\\User.cs",
+              "RelativeToolTip": "CameraServer\\Models\\User.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAcwBEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T14:55:23.182Z",
               "EditorCaption": ""
             }
           ]
