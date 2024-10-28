@@ -1,8 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "vgXJFxOxAjw=",
+  "dgSpecHash": "YX2CFYeLjIB89+jHgEH9Z2P8pR+wNTZ+rx7NnDs+C8SEwqLwwdtulmbufFoglhcis4K69fR9F2KN8PXdkvn1uA==",
   "success": true,
-  "projectFilePath": "D:\\WorkSpace\\Projects\\CameraSimulator\\User\\CameraQQQ\\CameraQQQ\\CameraQQQ.csproj",
-  "expectedPackageFiles": [],
-  "logs": []
+  "projectFilePath": "E:\\CameraSimulator\\User\\CameraQQQ\\CameraQQQ\\CameraQQQ.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Nitro 5\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file E:\\CameraSimulator\\User\\CameraQQQ\\CameraQQQ\\obj\\project.nuget.cache : Unexpected end of content while loading JObject. Path 'expectedPackageFiles', line 11, position 0."
+    }
+  ]
 }
