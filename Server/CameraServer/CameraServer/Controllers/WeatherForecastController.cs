@@ -30,6 +30,5 @@ namespace CameraServer.Controllers
             })
             .ToArray();
         }
-
     }
 }
