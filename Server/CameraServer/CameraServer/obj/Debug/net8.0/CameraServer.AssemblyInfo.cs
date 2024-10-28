@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("85d2d0bc-9d5f-44f0-826c-c404ce3e8329")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("CameraServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7e1182f05525c4eac28277013227ba1c70b531e8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ac9f7969abcb91e2183558f7308c9ca8e15c4ff3")]
 [assembly: System.Reflection.AssemblyProductAttribute("CameraServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CameraServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

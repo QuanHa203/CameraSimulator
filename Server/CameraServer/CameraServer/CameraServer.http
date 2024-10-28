@@ -1,6 +1,6 @@
 @CameraServer_HostAddress = http://localhost:5046
 
-GET {{CameraServer_HostAddress}}/weatherforecast/
+GET {{CameraServer_HostAddress}}/RegisterUser/
 Accept: application/json
 
 ###
