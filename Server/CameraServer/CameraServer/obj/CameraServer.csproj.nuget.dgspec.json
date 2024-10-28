@@ -12,9 +12,13 @@
         "projectPath": "D:\\GITHUB\\REPOS\\CameraSimulator\\Server\\CameraServer\\CameraServer\\CameraServer.csproj",
         "packagesPath": "C:\\Users\\My Computer\\.nuget\\packages\\",
         "outputPath": "D:\\GITHUB\\REPOS\\CameraSimulator\\Server\\CameraServer\\CameraServer\\obj\\",
+
         "projectStyle": "PackageReference",
         "configFilePaths": [
+
           "C:\\Users\\My Computer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Nitro 5\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -76,6 +80,11 @@
               "target": "Package",
               "version": "[8.0.1, )"
             },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+
             "Microsoft.Extensions.Logging.Console": {
               "target": "Package",
               "version": "[8.0.1, )"

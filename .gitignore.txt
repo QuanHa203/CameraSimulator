@@ -1,0 +1,5 @@
+/.vs/
+/CameraSimulator/User/CameraQQQ/.vs/
+/CameraSimulator/User/CameraQQQ/CameraQQQ/bin/Debug/
+/CameraSimulator/Server/CameraServer/.vs/
+/CameraSimulator/Server/CameraServer/CameraServer/bin/Debug/
