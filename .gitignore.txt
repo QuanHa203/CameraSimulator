@@ -1,5 +1,8 @@
-/.vs/
-/CameraSimulator/User/CameraQQQ/.vs/
-/CameraSimulator/User/CameraQQQ/CameraQQQ/bin/Debug/
-/CameraSimulator/Server/CameraServer/.vs/
-/CameraSimulator/Server/CameraServer/CameraServer/bin/Debug/
+.vs/
+User/CameraQQQ/.vs/
+User/CameraQQQ/CameraQQQ/bin/Debug/
+User/CameraQQQ/CameraQQQ/obj/Debug/
+Server/CameraServer/.vs/
+Server/CameraServer/CameraServer/bin/Debug/
+Server/CameraServer/CameraServer/bin/Debug/
+Server/CameraServer/CameraServer/obj/Debug/

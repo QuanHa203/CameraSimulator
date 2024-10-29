@@ -2379,7 +2379,7 @@
             "related": ".xml"
           },
           "ref/netcoreapp2.0/System.Threading.dll": {
-            "related": ".Overlapped.xml;.Tasks.Dataflow.xml;.Tasks.Extensions.xml;.Tasks.Parallel.xml;.Tasks.xml;.Thread.xml;.ThreadPool.xml;.Timer.xml;.xml"
+            "related": ".Overlapped.xml;.Tasks.Dataflow.xml;.Tasks.Extensions.xml;.Tasks.Parallel.xml;.Tasks.xml;.Timer.xml;.Thread.xml;.ThreadPool.xml;.xml"
           },
           "ref/netcoreapp2.0/System.Transactions.Local.dll": {
             "related": ".xml"
@@ -2421,7 +2421,7 @@
             "related": ".ReaderWriter.xml;.XDocument.xml;.XmlDocument.xml;.XmlSerializer.xml;.XPath.XDocument.xml;.XPath.xml"
           },
           "ref/netcoreapp2.0/System.dll": {
-            "related": ".AppContext.xml;.Buffers.xml;.Collections.Concurrent.xml;.Collections.Immutable.xml;.Collections.NonGeneric.xml;.Collections.Specialized.xml;.Collections.xml;.ComponentModel.Annotations.xml;.ComponentModel.EventBasedAsync.xml;.ComponentModel.Primitives.xml;.ComponentModel.TypeConverter.xml;.ComponentModel.xml;.Console.xml;.Data.Common.xml;.Diagnostics.Contracts.xml;.Diagnostics.Debug.xml;.Diagnostics.DiagnosticSource.xml;.Diagnostics.FileVersionInfo.xml;.Diagnostics.Process.xml;.Diagnostics.StackTrace.xml;.Diagnostics.TextWriterTraceListener.xml;.Diagnostics.Tools.xml;.Diagnostics.TraceSource.xml;.Diagnostics.Tracing.xml;.Drawing.Primitives.xml;.Dynamic.Runtime.xml;.Globalization.Calendars.xml;.Globalization.Extensions.xml;.Globalization.xml;.IO.Compression.xml;.IO.Compression.ZipFile.xml;.IO.FileSystem.DriveInfo.xml;.IO.FileSystem.Primitives.xml;.IO.FileSystem.Watcher.xml;.IO.FileSystem.xml;.IO.IsolatedStorage.xml;.IO.MemoryMappedFiles.xml;.IO.Pipes.xml;.IO.UnmanagedMemoryStream.xml;.IO.xml;.Linq.Expressions.xml;.Linq.Parallel.xml;.Linq.Queryable.xml;.Linq.xml;.Net.Http.xml;.Net.HttpListener.xml;.Net.Mail.xml;.Net.NameResolution.xml;.Net.NetworkInformation.xml;.Net.Ping.xml;.Net.Primitives.xml;.Net.Requests.xml;.Net.Security.xml;.Net.ServicePoint.xml;.Net.Sockets.xml;.Net.WebClient.xml;.Net.WebHeaderCollection.xml;.Net.WebProxy.xml;.Net.WebSockets.Client.xml;.Net.WebSockets.xml;.Numerics.Vectors.xml;.ObjectModel.xml;.Reflection.DispatchProxy.xml;.Reflection.Emit.ILGeneration.xml;.Reflection.Emit.Lightweight.xml;.Reflection.Emit.xml;.Reflection.Extensions.xml;.Reflection.Metadata.xml;.Reflection.Primitives.xml;.Reflection.TypeExtensions.xml;.Reflection.xml;.Resources.Reader.xml;.Resources.ResourceManager.xml;.Resources.Writer.xml;.Runtime.CompilerServices.VisualC.xml;.Runtime.Extensions.xml;.Runtime.Handles.xml;.Runtime.InteropServices.RuntimeInformation.xml;.Runtime.InteropServices.WindowsRuntime.xml;.Runtime.InteropServices.xml;.Runtime.Loader.xml;.Runtime.Numerics.xml;.Runtime.Serialization.Formatters.xml;.Runtime.Serialization.Json.xml;.Runtime.Serialization.Primitives.xml;.Runtime.Serialization.Xml.xml;.Runtime.xml;.Security.Claims.xml;.Security.Cryptography.Algorithms.xml;.Security.Cryptography.Csp.xml;.Security.Cryptography.Encoding.xml;.Security.Cryptography.Primitives.xml;.Security.Cryptography.X509Certificates.xml;.Security.Principal.xml;.Security.SecureString.xml;.Text.Encoding.Extensions.xml;.Text.Encoding.xml;.Text.RegularExpressions.xml;.Threading.Overlapped.xml;.Threading.Tasks.Dataflow.xml;.Threading.Tasks.Extensions.xml;.Threading.Tasks.Parallel.xml;.Threading.Tasks.xml;.Threading.Thread.xml;.Threading.ThreadPool.xml;.Threading.Timer.xml;.Threading.xml;.Transactions.Local.xml;.ValueTuple.xml;.Web.HttpUtility.xml;.Xml.ReaderWriter.xml;.Xml.XDocument.xml;.Xml.XmlDocument.xml;.Xml.XmlSerializer.xml;.Xml.XPath.XDocument.xml;.Xml.XPath.xml"
+            "related": ".AppContext.xml;.Buffers.xml;.Collections.Concurrent.xml;.Collections.Immutable.xml;.Collections.NonGeneric.xml;.Collections.Specialized.xml;.Collections.xml;.ComponentModel.Annotations.xml;.ComponentModel.EventBasedAsync.xml;.ComponentModel.Primitives.xml;.ComponentModel.TypeConverter.xml;.ComponentModel.xml;.Console.xml;.Data.Common.xml;.Diagnostics.Contracts.xml;.Diagnostics.Debug.xml;.Diagnostics.DiagnosticSource.xml;.Diagnostics.FileVersionInfo.xml;.Diagnostics.Process.xml;.Diagnostics.StackTrace.xml;.Diagnostics.TextWriterTraceListener.xml;.Diagnostics.Tools.xml;.Diagnostics.TraceSource.xml;.Diagnostics.Tracing.xml;.Drawing.Primitives.xml;.Dynamic.Runtime.xml;.Globalization.Calendars.xml;.Globalization.Extensions.xml;.Globalization.xml;.IO.Compression.xml;.IO.Compression.ZipFile.xml;.IO.FileSystem.DriveInfo.xml;.IO.FileSystem.Primitives.xml;.IO.FileSystem.Watcher.xml;.IO.FileSystem.xml;.IO.IsolatedStorage.xml;.IO.MemoryMappedFiles.xml;.IO.Pipes.xml;.IO.UnmanagedMemoryStream.xml;.IO.xml;.Linq.Expressions.xml;.Linq.Parallel.xml;.Linq.Queryable.xml;.Linq.xml;.Net.Http.xml;.Net.HttpListener.xml;.Net.Mail.xml;.Net.NameResolution.xml;.Net.NetworkInformation.xml;.Net.Ping.xml;.Net.Primitives.xml;.Net.Requests.xml;.Net.Security.xml;.Net.ServicePoint.xml;.Net.Sockets.xml;.Net.WebClient.xml;.Net.WebHeaderCollection.xml;.Net.WebProxy.xml;.Net.WebSockets.Client.xml;.Net.WebSockets.xml;.Numerics.Vectors.xml;.ObjectModel.xml;.Reflection.DispatchProxy.xml;.Reflection.Emit.ILGeneration.xml;.Reflection.Emit.Lightweight.xml;.Reflection.Emit.xml;.Reflection.Extensions.xml;.Reflection.Metadata.xml;.Reflection.Primitives.xml;.Reflection.TypeExtensions.xml;.Reflection.xml;.Resources.Reader.xml;.Resources.ResourceManager.xml;.Resources.Writer.xml;.Runtime.CompilerServices.VisualC.xml;.Runtime.Extensions.xml;.Runtime.Handles.xml;.Runtime.InteropServices.RuntimeInformation.xml;.Runtime.InteropServices.WindowsRuntime.xml;.Runtime.InteropServices.xml;.Runtime.Loader.xml;.Runtime.Numerics.xml;.Runtime.Serialization.Formatters.xml;.Runtime.Serialization.Json.xml;.Runtime.Serialization.Primitives.xml;.Runtime.Serialization.Xml.xml;.Runtime.xml;.Security.Claims.xml;.Security.Cryptography.Algorithms.xml;.Security.Cryptography.Csp.xml;.Security.Cryptography.Encoding.xml;.Security.Cryptography.Primitives.xml;.Security.Cryptography.X509Certificates.xml;.Security.Principal.xml;.Security.SecureString.xml;.Text.Encoding.Extensions.xml;.Text.Encoding.xml;.Text.RegularExpressions.xml;.Threading.Overlapped.xml;.Threading.Tasks.Dataflow.xml;.Threading.Tasks.Extensions.xml;.Threading.Tasks.Parallel.xml;.Threading.Tasks.xml;.Threading.Timer.xml;.Threading.Thread.xml;.Threading.ThreadPool.xml;.Threading.xml;.Transactions.Local.xml;.ValueTuple.xml;.Web.HttpUtility.xml;.Xml.ReaderWriter.xml;.Xml.XDocument.xml;.Xml.XmlDocument.xml;.Xml.XmlSerializer.xml;.Xml.XPath.XDocument.xml;.Xml.XPath.xml"
           },
           "ref/netcoreapp2.0/WindowsBase.dll": {},
           "ref/netcoreapp2.0/mscorlib.dll": {},
@@ -9949,6 +9949,7 @@
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.10",
       "Microsoft.EntityFrameworkCore.Tools.DotNet >= 2.0.3",
       "Microsoft.Extensions.DependencyInjection >= 8.0.1",
+      "Microsoft.Extensions.Logging.Abstractions >= 8.0.2",
       "Microsoft.Extensions.Logging.Console >= 8.0.1",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 8.0.6",
       "Swashbuckle.AspNetCore >= 6.4.0",
@@ -9956,19 +9957,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\My Computer\\.nuget\\packages\\": {}
+    "C:\\Users\\haqua\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GITHUB\\REPOS\\CameraSimulator\\Server\\CameraServer\\CameraServer\\CameraServer.csproj",
+      "projectUniqueName": "D:\\WorkSpace\\Projects\\CameraSimulator\\Server\\CameraServer\\CameraServer\\CameraServer.csproj",
       "projectName": "CameraServer",
-      "projectPath": "D:\\GITHUB\\REPOS\\CameraSimulator\\Server\\CameraServer\\CameraServer\\CameraServer.csproj",
-      "packagesPath": "C:\\Users\\My Computer\\.nuget\\packages\\",
-      "outputPath": "D:\\GITHUB\\REPOS\\CameraSimulator\\Server\\CameraServer\\CameraServer\\obj\\",
+      "projectPath": "D:\\WorkSpace\\Projects\\CameraSimulator\\Server\\CameraServer\\CameraServer\\CameraServer.csproj",
+      "packagesPath": "C:\\Users\\haqua\\.nuget\\packages\\",
+      "outputPath": "D:\\WorkSpace\\Projects\\CameraSimulator\\Server\\CameraServer\\CameraServer\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\My Computer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\haqua\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9976,6 +9982,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -9988,6 +9995,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -10030,6 +10042,10 @@
             "target": "Package",
             "version": "[8.0.1, )"
           },
+          "Microsoft.Extensions.Logging.Abstractions": {
+            "target": "Package",
+            "version": "[8.0.2, )"
+          },
           "Microsoft.Extensions.Logging.Console": {
             "target": "Package",
             "version": "[8.0.1, )"
@@ -10066,7 +10082,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

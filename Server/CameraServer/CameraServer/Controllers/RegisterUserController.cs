@@ -1,7 +1,9 @@
 ﻿using CameraServer.Models;
+using CameraServer.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
+using System.Net;
 
 namespace CameraServer.Controllers
 {
@@ -41,7 +43,32 @@ namespace CameraServer.Controllers
 
             return Ok(newUser);
         }
-        public class RegisterUser {
+
+        [HttpPost("AddUser")]
+        public IActionResult AddUser(RegisterUser registerUser)
+        {
+            var cookie = Request.Headers.Cookie.ToString();
+            HttpStatusCode statusCode = GetStatusCodeByCookie.GetStatusCode(cookie, _context);
+
+            if (statusCode != HttpStatusCode.OK)
+                return StatusCode((int)statusCode);
+
+            User user = new User()
+            {
+                IdRole = registerUser.IdRole,
+                UserName = registerUser.UserName,
+                Password = registerUser.Password,
+                Email = registerUser.Email,
+                IsBan = registerUser.IsBan
+            };
+            return Ok("Thêm thành công");
+            _context.Users.Add(user);
+            _context.SaveChanges();
+        }
+
+
+        public class RegisterUser
+        {
 
             public int IdRole { get; set; }
 

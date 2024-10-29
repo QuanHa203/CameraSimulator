@@ -6,14 +6,15 @@ namespace CameraServer.Models;
 
 public partial class CameraSimulatorContext : DbContext
 {
+    private IConfiguration _configuration;
     public CameraSimulatorContext()
     { 
     }
 
-    public CameraSimulatorContext(DbContextOptions<CameraSimulatorContext> options)
+    public CameraSimulatorContext(DbContextOptions<CameraSimulatorContext> options, IConfiguration configuration)
         : base(options)
     {
-        
+        _configuration = configuration;
     }
 
     public virtual DbSet<Camera> Cameras { get; set; } 
@@ -27,8 +28,11 @@ public partial class CameraSimulatorContext : DbContext
     public virtual DbSet<Video> Videos { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        string connectionString = _configuration.GetConnectionString("CameraServerContext")!;
+        optionsBuilder.UseSqlServer(connectionString);
+    }
 
-        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-HE3OLV6\\MSSQLSERVER01;Initial Catalog=CameraSimulator;Integrated Security=True;Multiple Active Result Sets=True;Encrypt=False");
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

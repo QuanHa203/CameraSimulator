@@ -9,7 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="P2PConnection\node_modules\**" />
+    <EmbeddedResource Remove="P2PConnection\node_modules\**" />
+    <None Remove="P2PConnection\node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2849.39" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,10 +35,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="P2PConnection\firebase-config.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="P2PConnection\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="P2PConnection\P2Pconnection.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="P2PConnection\package-lock.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="P2PConnection\package.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

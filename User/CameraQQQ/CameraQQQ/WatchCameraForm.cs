@@ -14,12 +14,13 @@ namespace CameraQQQ
         public WatchCameraForm()
         {
             InitializeComponent();
+
             webView2 = new WebView2()
             {
                 Dock = DockStyle.Fill,
             };
             webView2.Source = new Uri(_webPath);
-            this.Controls.Add(webView2);
+            panelWeb.Controls.Add(webView2);
         }
 
         private void WatchCameraForm_Load(object sender, EventArgs e)
@@ -33,20 +34,18 @@ namespace CameraQQQ
 
             btnMic.Left = (btnMic.Parent!.Width - btnMic.Width -80) /2;
             btnVolume.Left = (btnVolume.Parent!.Width - btnVolume.Width + 80) / 2;
-        }
 
-        private void panelButton_SizeChanged(object sender, EventArgs e)
-        {
+            btnMic.Top = btnMic.Parent!.Height - btnMic.Height - 20;
+            btnVolume.Top = btnVolume.Parent!.Height - btnVolume.Height - 20;
         }
 
         private void btnMic_Click(object sender, EventArgs e)
         {
-            if (isMicOn)
+            if(isMicOn) 
                 btnMic.BackgroundImage = Properties.Resources.micOff;
             else
                 btnMic.BackgroundImage = Properties.Resources.micOn;
-
-            isMicOn = !isMicOn;
+            isMicOn = !isMicOn;            
         }
 
         private void btnVolume_Click(object sender, EventArgs e)
@@ -55,7 +54,6 @@ namespace CameraQQQ
                 btnVolume.BackgroundImage = Properties.Resources.volumeOff;
             else
                 btnVolume.BackgroundImage = Properties.Resources.volumeOn;
-
             isVolumeOn = !isVolumeOn;
         }
     }

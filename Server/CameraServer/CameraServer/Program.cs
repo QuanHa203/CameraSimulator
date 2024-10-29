@@ -1,14 +1,7 @@
 using CameraServer.Models;
-using Microsoft.AspNetCore.Hosting.Server;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using CameraServer.Data;
+using CameraServer.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<CameraServerContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("CameraServerContext") ?? throw new InvalidOperationException("Connection string 'CameraServerContext' not found.")));
-
-
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -18,7 +11,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<CameraSimulatorContext>();
 
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
