@@ -1,5 +1,11 @@
 ﻿using CameraServer.Models;
+using CameraServer.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
+using System.ComponentModel.DataAnnotations;
+using System.Net;
+
 
 namespace CameraServer.Controllers
 {
@@ -13,33 +19,30 @@ namespace CameraServer.Controllers
             _context = context;
 
         }
-        [HttpPut("AddCamera")]
-        public IActionResult AddCamera(Camera cam)
+        [HttpPost("RegisterCamera")]
+        public IActionResult RegisterCamera(string cameraName , string password)
         {
-            if(string.IsNullOrEmpty(cam.CameraName)) 
+            if(string.IsNullOrEmpty(cameraName)) 
                 return BadRequest();
-            if (string.IsNullOrEmpty(cam.Password))
+            if (string.IsNullOrEmpty(password))
                 return BadRequest();
-            if (string.IsNullOrEmpty(cam.ConnectionCode))
-                return BadRequest();
-            
+
+
             Camera newCamera = new Camera
-            {               
-                CameraName = cam.CameraName,
-                Password = cam.Password,
-                ConnectionCode = cam.ConnectionCode,
+            {
+                CameraName = cameraName,
+                Password = password,
+                ConnectionCode = new Random().Next(100000000,999999999).ToString(),
             };
+            
+            
             var checkName = _context.Cameras.Any(name => name.CameraName.Trim() == newCamera.CameraName.Trim());
             if (checkName) { return BadRequest("Tên camera đã được sử dụng!"); }
-
-            var checkConnection = _context.Cameras.Any(connection => connection.ConnectionCode == newCamera.ConnectionCode.Trim());
-            if (checkConnection) { return BadRequest("Mã kết nối đã được sử dụng!"); }
-
             _context.Cameras.Add(newCamera);
             _context.SaveChanges();
-
-            return Ok(cam);
+            return Ok(newCamera);
         }
+       
        
     }
 }
