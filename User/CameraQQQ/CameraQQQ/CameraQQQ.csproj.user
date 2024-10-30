@@ -4,16 +4,16 @@
     <Compile Update="Admin\DashboardForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Client\HomeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Client\WatchCameraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="RegisterForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="User\HomeForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="WatchCameraForm.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
