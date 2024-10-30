@@ -1,7 +1,52 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\WorkSpace\\Projects\\CameraSimulator\\User\\CameraQQQ\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AA529794-EC78-499D-9AA1-BA43B089FA17}|CameraQQQ\\CameraQQQ.csproj|d:\\workspace\\projects\\camerasimulator\\user\\cameraqqq\\cameraqqq\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA529794-EC78-499D-9AA1-BA43B089FA17}|CameraQQQ\\CameraQQQ.csproj|solutionrelative:cameraqqq\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA529794-EC78-499D-9AA1-BA43B089FA17}|CameraQQQ\\CameraQQQ.csproj|d:\\workspace\\projects\\camerasimulator\\user\\cameraqqq\\cameraqqq\\registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA529794-EC78-499D-9AA1-BA43B089FA17}|CameraQQQ\\CameraQQQ.csproj|solutionrelative:cameraqqq\\registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA529794-EC78-499D-9AA1-BA43B089FA17}|CameraQQQ\\CameraQQQ.csproj|d:\\workspace\\projects\\camerasimulator\\user\\cameraqqq\\cameraqqq\\p2pconnection\\p2pconnection.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{AA529794-EC78-499D-9AA1-BA43B089FA17}|CameraQQQ\\CameraQQQ.csproj|solutionrelative:cameraqqq\\p2pconnection\\p2pconnection.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA529794-EC78-499D-9AA1-BA43B089FA17}|CameraQQQ\\CameraQQQ.csproj|D:\\WorkSpace\\Projects\\CameraSimulator\\User\\CameraQQQ\\cameraqqq\\registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{AA529794-EC78-499D-9AA1-BA43B089FA17}|CameraQQQ\\CameraQQQ.csproj|solutionrelative:cameraqqq\\registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA529794-EC78-499D-9AA1-BA43B089FA17}|CameraQQQ\\CameraQQQ.csproj|d:\\workspace\\projects\\camerasimulator\\user\\cameraqqq\\cameraqqq\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA529794-EC78-499D-9AA1-BA43B089FA17}|CameraQQQ\\CameraQQQ.csproj|solutionrelative:cameraqqq\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA529794-EC78-499D-9AA1-BA43B089FA17}|CameraQQQ\\CameraQQQ.csproj|D:\\WorkSpace\\Projects\\CameraSimulator\\User\\CameraQQQ\\cameraqqq\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{AA529794-EC78-499D-9AA1-BA43B089FA17}|CameraQQQ\\CameraQQQ.csproj|solutionrelative:cameraqqq\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA529794-EC78-499D-9AA1-BA43B089FA17}|CameraQQQ\\CameraQQQ.csproj|D:\\WorkSpace\\Projects\\CameraSimulator\\User\\CameraQQQ\\cameraqqq\\client\\watchcameraform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{AA529794-EC78-499D-9AA1-BA43B089FA17}|CameraQQQ\\CameraQQQ.csproj|solutionrelative:cameraqqq\\client\\watchcameraform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA529794-EC78-499D-9AA1-BA43B089FA17}|CameraQQQ\\CameraQQQ.csproj|D:\\WorkSpace\\Projects\\CameraSimulator\\User\\CameraQQQ\\cameraqqq\\client\\homeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{AA529794-EC78-499D-9AA1-BA43B089FA17}|CameraQQQ\\CameraQQQ.csproj|solutionrelative:cameraqqq\\client\\homeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA529794-EC78-499D-9AA1-BA43B089FA17}|CameraQQQ\\CameraQQQ.csproj|d:\\workspace\\projects\\camerasimulator\\user\\cameraqqq\\cameraqqq\\client\\watchcameraform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA529794-EC78-499D-9AA1-BA43B089FA17}|CameraQQQ\\CameraQQQ.csproj|solutionrelative:cameraqqq\\client\\watchcameraform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA529794-EC78-499D-9AA1-BA43B089FA17}|CameraQQQ\\CameraQQQ.csproj|d:\\workspace\\projects\\camerasimulator\\user\\cameraqqq\\cameraqqq\\client\\watchcameraform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA529794-EC78-499D-9AA1-BA43B089FA17}|CameraQQQ\\CameraQQQ.csproj|solutionrelative:cameraqqq\\client\\watchcameraform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA529794-EC78-499D-9AA1-BA43B089FA17}|CameraQQQ\\CameraQQQ.csproj|d:\\workspace\\projects\\camerasimulator\\user\\cameraqqq\\cameraqqq\\client\\homeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA529794-EC78-499D-9AA1-BA43B089FA17}|CameraQQQ\\CameraQQQ.csproj|solutionrelative:cameraqqq\\client\\homeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,6 +75,140 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "P2Pconnection.js",
+              "DocumentMoniker": "D:\\WorkSpace\\Projects\\CameraSimulator\\User\\CameraQQQ\\CameraQQQ\\P2PConnection\\P2Pconnection.js",
+              "RelativeDocumentMoniker": "CameraQQQ\\P2PConnection\\P2Pconnection.js",
+              "ToolTip": "D:\\WorkSpace\\Projects\\CameraSimulator\\User\\CameraQQQ\\CameraQQQ\\P2PConnection\\P2Pconnection.js",
+              "RelativeToolTip": "CameraQQQ\\P2PConnection\\P2Pconnection.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-10-30T14:34:05.742Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RegisterForm.cs [Design]",
+              "DocumentMoniker": "D:\\WorkSpace\\Projects\\CameraSimulator\\User\\CameraQQQ\\CameraQQQ\\RegisterForm.cs",
+              "RelativeDocumentMoniker": "CameraQQQ\\RegisterForm.cs",
+              "ToolTip": "D:\\WorkSpace\\Projects\\CameraSimulator\\User\\CameraQQQ\\CameraQQQ\\RegisterForm.cs [Design]",
+              "RelativeToolTip": "CameraQQQ\\RegisterForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T09:20:57.367Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\WorkSpace\\Projects\\CameraSimulator\\User\\CameraQQQ\\CameraQQQ\\User.cs",
+              "RelativeDocumentMoniker": "CameraQQQ\\User.cs",
+              "ToolTip": "D:\\WorkSpace\\Projects\\CameraSimulator\\User\\CameraQQQ\\CameraQQQ\\User.cs",
+              "RelativeToolTip": "CameraQQQ\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T09:14:55.836Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RegisterForm.cs",
+              "DocumentMoniker": "D:\\WorkSpace\\Projects\\CameraSimulator\\User\\CameraQQQ\\CameraQQQ\\RegisterForm.cs",
+              "RelativeDocumentMoniker": "CameraQQQ\\RegisterForm.cs",
+              "ToolTip": "D:\\WorkSpace\\Projects\\CameraSimulator\\User\\CameraQQQ\\CameraQQQ\\RegisterForm.cs",
+              "RelativeToolTip": "CameraQQQ\\RegisterForm.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACwAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T09:14:26.533Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "WatchCameraForm.cs",
+              "DocumentMoniker": "D:\\WorkSpace\\Projects\\CameraSimulator\\User\\CameraQQQ\\CameraQQQ\\Client\\WatchCameraForm.cs",
+              "RelativeDocumentMoniker": "CameraQQQ\\Client\\WatchCameraForm.cs",
+              "ToolTip": "D:\\WorkSpace\\Projects\\CameraSimulator\\User\\CameraQQQ\\CameraQQQ\\Client\\WatchCameraForm.cs",
+              "RelativeToolTip": "CameraQQQ\\Client\\WatchCameraForm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T09:11:33.128Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "HomeForm.cs",
+              "DocumentMoniker": "D:\\WorkSpace\\Projects\\CameraSimulator\\User\\CameraQQQ\\CameraQQQ\\Client\\HomeForm.cs",
+              "RelativeDocumentMoniker": "CameraQQQ\\Client\\HomeForm.cs",
+              "ToolTip": "D:\\WorkSpace\\Projects\\CameraSimulator\\User\\CameraQQQ\\CameraQQQ\\Client\\HomeForm.cs",
+              "RelativeToolTip": "CameraQQQ\\Client\\HomeForm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T09:11:29.763Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "HomeForm.cs [Design]",
+              "DocumentMoniker": "D:\\WorkSpace\\Projects\\CameraSimulator\\User\\CameraQQQ\\CameraQQQ\\Client\\HomeForm.cs",
+              "RelativeDocumentMoniker": "CameraQQQ\\Client\\HomeForm.cs",
+              "ToolTip": "D:\\WorkSpace\\Projects\\CameraSimulator\\User\\CameraQQQ\\CameraQQQ\\Client\\HomeForm.cs [Design]",
+              "RelativeToolTip": "CameraQQQ\\Client\\HomeForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T09:11:24.897Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "WatchCameraForm.cs [Design]",
+              "DocumentMoniker": "D:\\WorkSpace\\Projects\\CameraSimulator\\User\\CameraQQQ\\CameraQQQ\\Client\\WatchCameraForm.cs",
+              "RelativeDocumentMoniker": "CameraQQQ\\Client\\WatchCameraForm.cs",
+              "ToolTip": "D:\\WorkSpace\\Projects\\CameraSimulator\\User\\CameraQQQ\\CameraQQQ\\Client\\WatchCameraForm.cs [Design]",
+              "RelativeToolTip": "CameraQQQ\\Client\\WatchCameraForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T09:10:39.281Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "WatchCameraForm.Designer.cs",
+              "DocumentMoniker": "D:\\WorkSpace\\Projects\\CameraSimulator\\User\\CameraQQQ\\CameraQQQ\\Client\\WatchCameraForm.Designer.cs",
+              "RelativeDocumentMoniker": "CameraQQQ\\Client\\WatchCameraForm.Designer.cs",
+              "ToolTip": "D:\\WorkSpace\\Projects\\CameraSimulator\\User\\CameraQQQ\\CameraQQQ\\Client\\WatchCameraForm.Designer.cs",
+              "RelativeToolTip": "CameraQQQ\\Client\\WatchCameraForm.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T09:10:37.08Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LoginForm.cs [Design]",
+              "DocumentMoniker": "D:\\WorkSpace\\Projects\\CameraSimulator\\User\\CameraQQQ\\CameraQQQ\\LoginForm.cs",
+              "RelativeDocumentMoniker": "CameraQQQ\\LoginForm.cs",
+              "ToolTip": "D:\\WorkSpace\\Projects\\CameraSimulator\\User\\CameraQQQ\\CameraQQQ\\LoginForm.cs [Design]",
+              "RelativeToolTip": "CameraQQQ\\LoginForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T09:05:26.775Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LoginForm.cs",
+              "DocumentMoniker": "D:\\WorkSpace\\Projects\\CameraSimulator\\User\\CameraQQQ\\CameraQQQ\\LoginForm.cs",
+              "RelativeDocumentMoniker": "CameraQQQ\\LoginForm.cs",
+              "ToolTip": "D:\\WorkSpace\\Projects\\CameraSimulator\\User\\CameraQQQ\\CameraQQQ\\LoginForm.cs",
+              "RelativeToolTip": "CameraQQQ\\LoginForm.cs",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAAAFAAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T09:02:06.298Z"
             }
           ]
         },

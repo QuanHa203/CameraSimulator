@@ -1,34 +1,31 @@
 ﻿using CameraQQQ.Admin;
-using CameraQQQ.User;
-using Microsoft.VisualBasic.ApplicationServices;
+using CameraQQQ.Client;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
+using Register;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace CameraQQQ
 {
 
     public partial class LoginForm : Form
     {
-        public static UserLogin userLogin;
+        public static User userLogin;
         public LoginForm()
         {
             InitializeComponent();
         }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string userName = txtUsername.Text;
             string password = txtPassword.Text;
-            string url = $"https://localhost:7268/Login?username={userName}&password={password}";
-
+            string url = $"https://localhost:7268/LoginUser?username={userName}&password={password}";
 
             using (HttpClient client = new HttpClient())
             {
@@ -48,7 +45,7 @@ namespace CameraQQQ
 
                             if (httpResponseMessage.StatusCode == HttpStatusCode.OK)
                             {
-                                userLogin = JsonConvert.DeserializeObject<UserLogin>(data);
+                                userLogin = JsonConvert.DeserializeObject<User>(data);
                                 MessageBox.Show("Đăng nhập thành công");
                                 if (userLogin.IdRole == 1)
                                 {
@@ -61,7 +58,7 @@ namespace CameraQQQ
                                 else if (userLogin.IdRole == 2)
                                 {
                                     MessageBox.Show("Chào mừng user");
-                                    new CameraQQQ.User.HomeForm().Show();
+                                    new HomeForm().Show();
                                     this.Close();
                                 }
                             }
@@ -77,14 +74,11 @@ namespace CameraQQQ
             }
         }
 
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void lbAcc_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            new RegisterForm().ShowDialog();
+            this.Show();
         }
     }
 }

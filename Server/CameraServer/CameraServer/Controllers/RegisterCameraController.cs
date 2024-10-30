@@ -17,7 +17,6 @@ namespace CameraServer.Controllers
         public RegisterCameraController(CameraSimulatorContext context)
         {
             _context = context;
-
         }
         [HttpPost("RegisterCamera")]
         public IActionResult RegisterCamera(string cameraName , string password)
