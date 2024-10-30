@@ -1,20 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GITHUB\\REPOS\\CameraSimulator\\Server\\CameraServer\\CameraServer\\CameraServer.csproj": {}
+
+
+    "E:\\CameraSimulator\\Server\\CameraServer\\CameraServer\\CameraServer.csproj": {}
   },
   "projects": {
-    "D:\\GITHUB\\REPOS\\CameraSimulator\\Server\\CameraServer\\CameraServer\\CameraServer.csproj": {
+    "E:\\CameraSimulator\\Server\\CameraServer\\CameraServer\\CameraServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GITHUB\\REPOS\\CameraSimulator\\Server\\CameraServer\\CameraServer\\CameraServer.csproj",
+        "projectUniqueName": "E:\\CameraSimulator\\Server\\CameraServer\\CameraServer\\CameraServer.csproj",
         "projectName": "CameraServer",
-        "projectPath": "D:\\GITHUB\\REPOS\\CameraSimulator\\Server\\CameraServer\\CameraServer\\CameraServer.csproj",
-        "packagesPath": "C:\\Users\\My Computer\\.nuget\\packages\\",
-        "outputPath": "D:\\GITHUB\\REPOS\\CameraSimulator\\Server\\CameraServer\\CameraServer\\obj\\",
+        "projectPath": "E:\\CameraSimulator\\Server\\CameraServer\\CameraServer\\CameraServer.csproj",
+        "packagesPath": "C:\\Users\\Nitro 5\\.nuget\\packages\\",
+        "outputPath": "E:\\CameraSimulator\\Server\\CameraServer\\CameraServer\\obj\\",
+
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\My Computer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+
+          "C:\\Users\\Nitro 5\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
