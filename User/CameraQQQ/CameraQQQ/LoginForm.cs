@@ -86,5 +86,11 @@ namespace CameraQQQ
         {
 
         }
+
+        private void Forgot_Click(object sender, EventArgs e)
+        {
+            new ForgotPasswordUser().Show();
+            this.Close();
+        }
     }
 }
