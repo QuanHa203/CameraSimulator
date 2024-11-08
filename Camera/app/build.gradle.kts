@@ -1,4 +1,6 @@
 plugins {
+    id("com.google.gms.google-services")
+
     alias(libs.plugins.android.application)
 }
 
@@ -41,4 +43,8 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
 
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation ("com.google.code.gson:gson:2.8.8")
+
+    implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
+    implementation("com.google.firebase:firebase-firestore")
 }

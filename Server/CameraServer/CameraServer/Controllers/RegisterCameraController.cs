@@ -26,7 +26,6 @@ namespace CameraServer.Controllers
             if (string.IsNullOrEmpty(password))
                 return BadRequest();
 
-
             Camera newCamera = new Camera
             {
                 CameraName = cameraName,
@@ -39,9 +38,7 @@ namespace CameraServer.Controllers
             if (checkName) { return BadRequest("Tên camera đã được sử dụng!"); }
             _context.Cameras.Add(newCamera);
             _context.SaveChanges();
-            return Ok(newCamera);
+            return Ok("Đăng ký thành công!");
         }
-       
-       
     }
 }

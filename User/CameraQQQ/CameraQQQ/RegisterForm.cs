@@ -1,4 +1,4 @@
-﻿using CameraQQQ;
+﻿using CameraQQQ.Models;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -6,7 +6,6 @@ namespace Register
 {
     public partial class RegisterForm : Form
     {
-        private User user = null;
         public RegisterForm()
         {
             InitializeComponent();

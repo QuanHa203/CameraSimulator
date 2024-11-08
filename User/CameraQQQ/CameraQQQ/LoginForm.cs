@@ -1,5 +1,6 @@
 ﻿using CameraQQQ.Admin;
 using CameraQQQ.Client;
+using CameraQQQ.Models;
 using Newtonsoft.Json;
 using Register;
 using System.Net;
@@ -10,7 +11,11 @@ namespace CameraQQQ
 
     public partial class LoginForm : Form
     {
-        public static User userLogin;
+        public static User userLogin = new User()
+        {
+            UserName = "HaQuan",
+            ConnectionCode = "111111111"
+        };
         public LoginForm()
         {
             InitializeComponent();

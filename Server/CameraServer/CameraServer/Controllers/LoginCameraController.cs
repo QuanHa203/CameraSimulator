@@ -17,20 +17,16 @@ namespace CameraServer.Controllers
 
         [HttpPost("login")] 
         public IActionResult LoginCamera(string cameraName, string password) {
+            var camera = _context.Cameras.FirstOrDefault(cam => cam.CameraName == cameraName && cam.Password == password);
 
-            Camera camera = new Camera
+            if (camera == null)
+                return BadRequest("Tên đăng nhập hoặc mật khẩu không chính xác");
+
+            return Ok(new
             {
-                CameraName = cameraName,
-                Password = password
-            };
-
-            var checkCam = _context.Cameras.Any(cam => cam.CameraName == camera.CameraName);
-            if (!checkCam) { return BadRequest("Tên đăng nhập Camera không chính xác!."); }
-
-            var checkPassWord = _context.Cameras.Any(pass => pass.Password == camera.Password);
-            if (!checkPassWord) { return BadRequest("Mật khẩu không trùng khớp!"); }
-
-            return Ok("Kết nối Camera thành công!");
+                CameraName = camera?.CameraName,
+                ConnectionCode = camera?.ConnectionCode,
+            });
         }
     }
 }

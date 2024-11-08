@@ -46,7 +46,6 @@ namespace CameraServer.Controllers
 
         public class RegisterUser
         {
-
             public int IdRole { get; set; }
 
             [StringLength(100)]

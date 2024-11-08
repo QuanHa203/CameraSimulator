@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WatchCameraForm));
             labelCameraName = new Label();
             btnMic = new Button();
             btnVolume = new Button();
@@ -52,6 +51,7 @@
             // btnMic
             // 
             btnMic.BackColor = Color.Transparent;
+            btnMic.BackgroundImage = Properties.Resources.micOff;
             btnMic.BackgroundImageLayout = ImageLayout.Zoom;
             btnMic.Cursor = Cursors.Hand;
             btnMic.FlatAppearance.BorderSize = 0;
@@ -68,6 +68,7 @@
             // btnVolume
             // 
             btnVolume.BackColor = Color.Transparent;
+            btnVolume.BackgroundImage = Properties.Resources.volumeOn;
             btnVolume.BackgroundImageLayout = ImageLayout.Stretch;
             btnVolume.Cursor = Cursors.Hand;
             btnVolume.FlatAppearance.BorderSize = 0;
@@ -114,6 +115,7 @@
             ForeColor = Color.Transparent;
             Name = "WatchCameraForm";
             Text = "WatchCameraForm";
+            FormClosed += WatchCameraForm_FormClosed;
             Load += WatchCameraForm_Load;
             SizeChanged += WatchCameraForm_SizeChanged;
             panel1.ResumeLayout(false);

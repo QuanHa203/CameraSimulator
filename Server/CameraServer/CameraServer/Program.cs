@@ -2,6 +2,12 @@ using CameraServer.Models;
 using CameraServer.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+#if DEBUG
+builder.WebHost.UseKestrel(options =>
+{
+    options.ListenAnyIP(5000);    
+});
+#endif
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -19,7 +25,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseStaticFiles();
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

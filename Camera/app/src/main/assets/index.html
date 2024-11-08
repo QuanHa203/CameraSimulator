@@ -30,12 +30,18 @@
             /* Đảm bảo video phủ toàn bộ */
             transform: translate(-50%, -50%);
         }
+
+        #sound-from-sender {
+            width: 0;
+            height: 0;
+        }
     </style>
 </head>
 
 <body>
     <div id="client-screen">
         <video id="local-video-stream" muted autoplay></video>
+        <video id="sound-from-sender" autoplay></video>
     </div>
 
     <script src="./P2Pconnection.js"></script>

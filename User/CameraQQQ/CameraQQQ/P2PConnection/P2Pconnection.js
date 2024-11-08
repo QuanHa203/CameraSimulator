@@ -1,15 +1,124 @@
-const cameraVideoStreamElement = document.getElementById("camera-video-stream");
+﻿const servers = {
+    iceServers: [
+        {
+            urls: [
+                'stun:stun.l.google.com:19302',
+                'stun:stun1.l.google.com:19302',
+                'stun:stun2.l.google.com:19302'
+            ],
+        },
+    ],
+    iceCandidatePoolSize: 10,
+};
 
-const sender = new RTCPeerConnection();
-const dataChannel = sender.createDataChannel("Channel");
+const sender = new RTCPeerConnection(servers);
+const callCSharp = chrome.webview.hostObjects.callCSharp;
 
-navigator.mediaDevices.getUserMedia({ audio: true })
-    .then(stream => {
-        stream.getTracks().forEach(track => sender.addTrack(track, stream));
+let pendingCandidates = [];
+let cameraVideoStream = document.getElementById("camera-video-stream");
+let audioTrack = null;
+
+navigator.mediaDevices.getUserMedia({ audio: true, video: true })
+    .then(mediaStream => {
+        audioTrack = mediaStream.getAudioTracks()[0];
+
+        mediaStream.getTracks().forEach(stream => {
+            sender.addTrack(stream, mediaStream);
+            window.chrome.webview.postMessage("Granted");
+        })
     })
+    .catch(err => {
+        alert("Error: " + err)
+        window.chrome.webview.postMessage("Denied");
+    });
 
-    .catch(e => console.log(e));
+sender.ontrack = (ev) => {
+    cameraVideoStream.srcObject = ev.streams[0];
+    cameraVideoStream.style.transform = "rotate(-90deg)";    
+};
 
-sender.ontrack = (event) => {    
-    cameraVideoStreamElement.srcObject = event.streams[0];
+sender.onicecandidate = (ev) => {
+    if (ev.candidate) {
+        // Send candidate to Firebase    
+        callCSharp.SetIceCandidateUser(JSON.stringify(ev.candidate));
+    }
+};
+
+function createOffer() {
+
+    // Create Offer
+    sender.createOffer()
+        .then(offer => {
+
+            // Save offer to sender
+            sender.setLocalDescription(offer)
+                .then(v => {
+
+                    // Set offer to save in firebase
+                    if (sender.localDescription != null)
+                        callCSharp.SetOffer(JSON.stringify(sender.localDescription));
+                })
+                .catch(err => console.log(err));
+        })
+        .catch(err => console.log("Error Set Offer: " + err));
+}
+
+function setAnswerFromCamera(answer) {
+    sender.setRemoteDescription(answer)
+        .then(v => {
+            pendingCandidates.forEach(candidate => peerConnection.addIceCandidate(candidate));
+            pendingCandidates = []; // Xóa danh sách sau khi đã thêm
+        })
+        .catch(err => console.log("setRemoteDescription fail - Error: " + err));
+
+    if (sender.remoteDescription) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+function setIceCandidateFromCamera(candidate) {
+
+    if (sender.remoteDescription) {
+        sender.addIceCandidate(JSON.parse(candidate))
+            .then(v => console.log("Oke"))
+            .catch(err => console.log(err));
+    }
+    else {
+        pendingCandidates.push(candidate);
+    }
+
+}
+
+sender.oniceconnectionstatechange = async () => {
+    console.log("ICE Connection State:", sender.iceConnectionState);
+
+    if (sender.iceConnectionState === "disconnected") {
+        sender.close();
+
+    }
+};
+
+function turnOnVolume() {
+    cameraVideoStream.muted = false;
+}
+
+function turnOffVolume() {
+    cameraVideoStream.muted = true;
+}
+
+function turnOnMicro() {
+    if (audioTrack == null)
+        return;
+    
+    audioTrack.enabled = true;
+}
+
+function turnOffMicro() {
+    if (audioTrack == null)
+        return;
+    
+    audioTrack.enabled = false;
 }
