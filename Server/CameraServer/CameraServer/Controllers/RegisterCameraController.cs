@@ -42,7 +42,5 @@ namespace CameraServer.Controllers
             _context.SaveChanges();
             return Ok(newCamera);
         }
-       
-       
     }
 }

@@ -44,28 +44,6 @@ namespace CameraServer.Controllers
             return Ok(newUser);
         }
 
-        [HttpPost("AddUser")]
-        public IActionResult AddUser(RegisterUser registerUser)
-        {
-            var cookie = Request.Headers.Cookie.ToString();
-            HttpStatusCode statusCode = GetStatusCodeByCookie.GetStatusCode(cookie, _context);
-
-            if (statusCode != HttpStatusCode.OK)
-                return StatusCode((int)statusCode);
-
-            User user = new User()
-            {
-                IdRole = registerUser.IdRole,
-                UserName = registerUser.UserName,
-                Password = registerUser.Password,
-                Email = registerUser.Email,
-                IsBan = registerUser.IsBan
-            };
-            return Ok("Thêm thành công");
-            _context.Users.Add(user);
-            _context.SaveChanges();
-        }
-
 
         public class RegisterUser
         {

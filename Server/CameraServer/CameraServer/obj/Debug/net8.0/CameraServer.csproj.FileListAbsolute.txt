@@ -717,3 +717,6 @@ E:\CameraSimulator\Server\CameraServer\CameraServer\obj\Debug\net8.0\refint\Came
 E:\CameraSimulator\Server\CameraServer\CameraServer\obj\Debug\net8.0\CameraServer.pdb
 E:\CameraSimulator\Server\CameraServer\CameraServer\obj\Debug\net8.0\CameraServer.genruntimeconfig.cache
 E:\CameraSimulator\Server\CameraServer\CameraServer\obj\Debug\net8.0\ref\CameraServer.dll
+D:\GITHUB\REPOS\CameraSimulator\Server\CameraServer\CameraServer\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+D:\GITHUB\REPOS\CameraSimulator\Server\CameraServer\CameraServer\bin\Debug\net8.0\MailKit.dll
+D:\GITHUB\REPOS\CameraSimulator\Server\CameraServer\CameraServer\bin\Debug\net8.0\MimeKit.dll
