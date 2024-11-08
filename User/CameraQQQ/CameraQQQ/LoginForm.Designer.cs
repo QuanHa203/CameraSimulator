@@ -36,6 +36,7 @@
             btnLogin = new Button();
             label4 = new Label();
             lbAcc = new Label();
+            Forgot = new Label();
             SuspendLayout();
             // 
             // label1
@@ -95,7 +96,7 @@
             btnLogin.Cursor = Cursors.Hand;
             btnLogin.FlatAppearance.BorderSize = 0;
             btnLogin.ForeColor = Color.White;
-            btnLogin.Location = new Point(38, 326);
+            btnLogin.Location = new Point(38, 345);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(216, 35);
             btnLogin.TabIndex = 5;
@@ -124,12 +125,25 @@
             lbAcc.Text = "Create Account\r\n";
             lbAcc.Click += lbAcc_Click;
             // 
+            // Forgot
+            // 
+            Forgot.AutoSize = true;
+            Forgot.Cursor = Cursors.Hand;
+            Forgot.ForeColor = Color.FromArgb(116, 86, 174);
+            Forgot.Location = new Point(38, 291);
+            Forgot.Name = "Forgot";
+            Forgot.Size = new Size(136, 23);
+            Forgot.TabIndex = 9;
+            Forgot.Text = "Forgot Pasword";
+            Forgot.Click += Forgot_Click;
+            // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(10F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(300, 544);
+            Controls.Add(Forgot);
             Controls.Add(lbAcc);
             Controls.Add(label4);
             Controls.Add(btnLogin);
@@ -160,5 +174,6 @@
         private Label label4;
         private Label lb;
         private Label lbAcc;
+        private Label Forgot;
     }
 }
