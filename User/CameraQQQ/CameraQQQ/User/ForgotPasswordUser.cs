@@ -27,7 +27,7 @@ namespace CameraQQQ.User
         private void btnClick_Click(object sender, EventArgs e)
         {
             string email = txtEmail.Text;
-            string url = "";
+            string url = $"https://localhost:7268/api/ForgotPassword?email={email}";
             using (HttpClient client = new HttpClient())
             {
                 client.BaseAddress = new Uri(url);
@@ -47,12 +47,15 @@ namespace CameraQQQ.User
 
                             if (httpResponseMessage.StatusCode == HttpStatusCode.OK)
                             {
-                                MessageBox.Show("Yêu cầu đặt lại mật khẩu đã được gửi thành công. Vui lòng kiểm tra email.");
+                                MessageBox.Show(data);
                                 this.Close();
+                                new LoginForm().Show();
+
                             }
                             else
                             {
-                                MessageBox.Show("Không tìm thấy email hoặc có lỗi xảy ra.");
+                                MessageBox.Show(data);
+
                             }
                         }
                     }
@@ -62,7 +65,7 @@ namespace CameraQQQ.User
 
         private void lbLogin_Click(object sender, EventArgs e)
         {
-            new LoginForm().Show();
+            new LoginForm().ShowDialog();
             this.Close();
         }
     }

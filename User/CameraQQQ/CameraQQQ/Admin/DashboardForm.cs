@@ -16,5 +16,15 @@ namespace CameraQQQ.Admin
         {
             InitializeComponent();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnUser_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

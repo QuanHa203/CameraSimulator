@@ -720,3 +720,6 @@ E:\CameraSimulator\Server\CameraServer\CameraServer\obj\Debug\net8.0\ref\CameraS
 D:\GITHUB\REPOS\CameraSimulator\Server\CameraServer\CameraServer\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
 D:\GITHUB\REPOS\CameraSimulator\Server\CameraServer\CameraServer\bin\Debug\net8.0\MailKit.dll
 D:\GITHUB\REPOS\CameraSimulator\Server\CameraServer\CameraServer\bin\Debug\net8.0\MimeKit.dll
+E:\CameraSimulator\Server\CameraServer\CameraServer\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+E:\CameraSimulator\Server\CameraServer\CameraServer\bin\Debug\net8.0\MailKit.dll
+E:\CameraSimulator\Server\CameraServer\CameraServer\bin\Debug\net8.0\MimeKit.dll

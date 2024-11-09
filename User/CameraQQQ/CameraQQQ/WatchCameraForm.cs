@@ -41,20 +41,20 @@ namespace CameraQQQ
 
         private void btnMic_Click(object sender, EventArgs e)
         {
-            if(isMicOn) 
-                btnMic.BackgroundImage = Properties.Resources.micOff;
-            else
-                btnMic.BackgroundImage = Properties.Resources.micOn;
-            isMicOn = !isMicOn;            
+            //if(isMicOn) 
+            //    btnMic.BackgroundImage = Properties.Resources.micOff;
+            //else
+            //    btnMic.BackgroundImage = Properties.Resources.micOn;
+            //isMicOn = !isMicOn;            
         }
 
         private void btnVolume_Click(object sender, EventArgs e)
         {
-            if (isVolumeOn)
-                btnVolume.BackgroundImage = Properties.Resources.volumeOff;
-            else
-                btnVolume.BackgroundImage = Properties.Resources.volumeOn;
-            isVolumeOn = !isVolumeOn;
+            //if (isVolumeOn)
+            //    btnVolume.BackgroundImage = Properties.Resources.volumeOff;
+            //else
+            //    btnVolume.BackgroundImage = Properties.Resources.volumeOn;
+            //isVolumeOn = !isVolumeOn;
         }
     }
 }
