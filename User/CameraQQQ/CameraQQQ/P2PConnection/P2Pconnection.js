@@ -3,8 +3,8 @@
         {
             urls: [
                 'stun:stun.l.google.com:19302',
-                'stun:stun1.l.google.com:19302',
-                'stun:stun2.l.google.com:19302'
+                //'stun:stun1.l.google.com:19302',
+                //'stun:stun2.l.google.com:19302'
             ],
         },
     ],
@@ -21,6 +21,7 @@ let audioTrack = null;
 navigator.mediaDevices.getUserMedia({ audio: true, video: true })
     .then(mediaStream => {
         audioTrack = mediaStream.getAudioTracks()[0];
+        audioTrack.enabled = false;
 
         mediaStream.getTracks().forEach(stream => {
             sender.addTrack(stream, mediaStream);
@@ -28,13 +29,14 @@ navigator.mediaDevices.getUserMedia({ audio: true, video: true })
         })
     })
     .catch(err => {
-        alert("Error: " + err)
+        // alert("Error: " + err)
         window.chrome.webview.postMessage("Denied");
     });
 
 sender.ontrack = (ev) => {
+    console.log(sender);
     cameraVideoStream.srcObject = ev.streams[0];
-    cameraVideoStream.style.transform = "rotate(-90deg)";    
+    cameraVideoStream.style.transform = "rotate(-90deg)";
 };
 
 sender.onicecandidate = (ev) => {
@@ -63,13 +65,16 @@ function createOffer() {
         .catch(err => console.log("Error Set Offer: " + err));
 }
 
-function setAnswerFromCamera(answer) {
+function setAnswerFromCamera(answer) {    
+    console.log(pendingCandidates);
     sender.setRemoteDescription(answer)
         .then(v => {
-            pendingCandidates.forEach(candidate => peerConnection.addIceCandidate(candidate));
-            pendingCandidates = []; // Xóa danh sách sau khi đã thêm
+            pendingCandidates.forEach(candidate => sender.addIceCandidate(candidate));
+            pendingCandidates = []; // Xóa danh sách sau khi đã thêm            
         })
-        .catch(err => console.log("setRemoteDescription fail - Error: " + err));
+        .catch(err => {
+            console.log("setRemoteDescription fail - Error: " + err)            
+        });
 
     if (sender.remoteDescription) {
         return true;
@@ -83,11 +88,11 @@ function setIceCandidateFromCamera(candidate) {
 
     if (sender.remoteDescription) {
         sender.addIceCandidate(JSON.parse(candidate))
-            .then(v => console.log("Oke"))
+            .then()
             .catch(err => console.log(err));
     }
     else {
-        pendingCandidates.push(candidate);
+        pendingCandidates.push(JSON.parse(candidate));
     }
 
 }
@@ -95,9 +100,13 @@ function setIceCandidateFromCamera(candidate) {
 sender.oniceconnectionstatechange = async () => {
     console.log("ICE Connection State:", sender.iceConnectionState);
 
+    if (sender.iceConnectionState === "connected") {
+        callCSharp.NotifyCameraConnected();
+    }
+
     if (sender.iceConnectionState === "disconnected") {
         sender.close();
-
+        callCSharp.NotifyCameraDisconnected();
     }
 };
 
@@ -112,13 +121,13 @@ function turnOffVolume() {
 function turnOnMicro() {
     if (audioTrack == null)
         return;
-    
+
     audioTrack.enabled = true;
 }
 
 function turnOffMicro() {
     if (audioTrack == null)
         return;
-    
+
     audioTrack.enabled = false;
 }

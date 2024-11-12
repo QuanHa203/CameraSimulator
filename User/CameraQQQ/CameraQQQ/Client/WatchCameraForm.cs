@@ -4,6 +4,7 @@ using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.WinForms;
 using Newtonsoft.Json;
 using System.Security.Permissions;
+using System.Runtime.CompilerServices;
 
 namespace CameraQQQ.Client
 {
@@ -74,7 +75,7 @@ namespace CameraQQQ.Client
 
         private async void WatchCameraForm_Load(object sender, EventArgs e)
         {
-            await webView2.EnsureCoreWebView2Async();
+             await webView2.EnsureCoreWebView2Async();
 
             // Create Object callCSharp in JS
             webView2.CoreWebView2.AddHostObjectToScript("callCSharp", new CallCShapFromJavaScript());
@@ -93,7 +94,7 @@ namespace CameraQQQ.Client
             if (message == "Granted")
             {
                 webView2.CoreWebView2.WebMessageReceived -= messageReceivedHandlerPermissionState;
-                Task t = ExecutePeerToPeerConnectionAsync();                
+                Task t = ExecutePeerToPeerConnectionAsync();
             }
             else if (message == "Denied")
             {
@@ -101,7 +102,7 @@ namespace CameraQQQ.Client
                 webView2.CoreWebView2.WebMessageReceived -= messageReceivedHandlerPermissionState;
                 this.Close();
             }
-        }       
+        }
 
         private async Task ExecutePeerToPeerConnectionAsync()
         {
@@ -115,7 +116,7 @@ namespace CameraQQQ.Client
             // Init new thread to listen answer and then set answer to RTCPeerConnection.
             Task t1 = Task.Run(async () =>
             {
-                var answer = await FirestoreDbContext.Instance.GetAnswerFromCamera();                
+                var answer = await FirestoreDbContext.Instance.GetAnswerFromCamera();
                 Task t = this.Invoke(async () =>
                 {
                     string jsonAnswer = JsonConvert.SerializeObject(answer);
@@ -132,15 +133,20 @@ namespace CameraQQQ.Client
                 });
             });
 
+            Task t2 = Task.Run(() =>
+            {
+                while (CallCShapFromJavaScript.IsDisconnected == null || CallCShapFromJavaScript.IsDisconnected == true) { }        
+                WatchCameraForm_Load(new object(), new EventArgs());
+            });
         }
 
         private async void WatchCameraForm_FormClosed(object sender, FormClosedEventArgs e)
-            => await FirestoreDbContext.Instance.Disconnect();        
+            => await FirestoreDbContext.Instance.Disconnect();
 
-        private void btnMic_Click(object sender, EventArgs e) 
+        private void btnMic_Click(object sender, EventArgs e)
             => IsMicOn = !IsMicOn;
 
-        private void btnVolume_Click(object sender, EventArgs e) 
+        private void btnVolume_Click(object sender, EventArgs e)
             => IsVolumeOn = !IsVolumeOn;
 
         private void WatchCameraForm_SizeChanged(object sender, EventArgs e)

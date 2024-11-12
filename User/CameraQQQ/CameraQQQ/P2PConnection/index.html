@@ -11,22 +11,27 @@
             margin: 0;
             padding: 0;
         }
-
-        #client-screen {
-            
+        #container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
         }
 
-        #client-screen>#camera-video-stream {
-             
+        #camera-video-stream {
+            width: 100vh; /* Đặt chiều rộng video là 100% chiều cao màn hình */
+            height: 100vw; /* Đặt chiều cao video là 100% chiều rộng màn hình */
+            object-fit: cover; /* Đảm bảo video lấp đầy màn hình mà vẫn giữ tỉ lệ */
+            transform: rotate(90deg); /* Xoay video 90 độ để hiển thị ngang */
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div id="client-screen">
-            <video id="camera-video-stream" autoplay playsinline></video>
-        </div>
+    <div id="container">
+        <video id="camera-video-stream" autoplay playsinline></video>
     </div>
     <script src="./P2Pconnection.js"></script>
 </body>

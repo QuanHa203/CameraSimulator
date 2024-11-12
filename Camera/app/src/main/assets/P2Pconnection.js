@@ -3,8 +3,8 @@ const servers = {
         {
             urls: [
                 'stun:stun.l.google.com:19302',
-                'stun:stun1.l.google.com:19302',
-                'stun:stun2.l.google.com:19302'
+//                'stun:stun1.l.google.com:19302',
+//                'stun:stun2.l.google.com:19302'
             ],
         },
     ],
@@ -13,7 +13,7 @@ const servers = {
 const camera = new RTCPeerConnection(servers);
 const soundFromSender = document.getElementById("sound-from-sender");
 
-navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment", frameRate: { ideal: 60, max: 60 }, aspectRatio: 16 / 9 }, audio: true })
+navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment", width: { ideal: 1920 }, height: { ideal: 1080 }, frameRate: { ideal: 30 } }, audio: true })
     .then(stream => {
         document.getElementById('local-video-stream').srcObject = stream;
         stream.getTracks().forEach(track => camera.addTrack(track, stream));
@@ -38,7 +38,6 @@ function setOfferFromSender(offer) {
         })
         .catch(err => {
             console.log("Error: " + err);
-            // setOfferFromSender(offer);
         })
 }
 
@@ -57,7 +56,6 @@ function createAnswer() {
         .catch(err => {
             console.log("Error: " + err);
             // if(camera.localDescription == null)
-            //     createAnswer();
         })
 }
 

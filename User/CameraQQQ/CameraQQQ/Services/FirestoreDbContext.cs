@@ -18,8 +18,8 @@ namespace CameraQQQ.Services
         private static FirestoreDbContext instance = null!;
 
         private FirestoreDb firestoreDb;
-        private FirestoreChangeListener firestoreChangeListener;
         private DocumentReference documentReference;
+        private FirestoreChangeListener firestoreChangeListenerAnswer;        
         private Answer answerFromCamera = null!;
 
         public static FirestoreDbContext Instance
@@ -43,30 +43,7 @@ namespace CameraQQQ.Services
             firestoreDb = FirestoreDb.Create(projectId);
             documentReference = firestoreDb.Document($"{collectionName}/{LoginForm.userLogin.ConnectionCode}/{LoginForm.userLogin.UserName}/{LoginForm.userLogin.UserName}");
 
-            // Register event value change.
-            firestoreChangeListener = documentReference.Listen(snapshot =>
-            {
-                if (snapshot.Exists)
-                {
-                    foreach (var field in snapshot.ToDictionary())
-                    {
-                        if (field.Key == "Answer")
-                        {
-                            if (answerFromCamera == null && field.Value != null && field.Value.ToString()!.Length > 0)
-                            {
-                                dynamic answer = field.Value;
-                                if (answer.Count > 0)
-                                    answerFromCamera = new Answer
-                                    {
-                                        type = answer["type"],
-                                        sdp = answer["sdp"]
-                                    };
-                            }
-                            break;
-                        }
-                    }
-                }
-            });
+            firestoreChangeListenerAnswer = ListenForAnswerFromCameraChange();
         }
 
         public async Task UpdateOffer(string offer)
@@ -86,7 +63,7 @@ namespace CameraQQQ.Services
             catch { }
         }
 
-        public async Task UpdateCandidate(string candidate)
+        public async Task UpdateCandidateUser(string candidate)
         {
             Dictionary<string, object> updateCandidate = new();
             var jsonCandidate = JsonConvert.DeserializeObject<Dictionary<string, object>>(candidate);
@@ -108,13 +85,14 @@ namespace CameraQQQ.Services
             disconnectValue.Add("ICECandidateCamera", new List<object>());
             disconnectValue.Add("ICECandidateUser", new List<object>());
             await documentReference.SetAsync(disconnectValue);
+            answerFromCamera = null!;
         }
 
         public async Task<Answer> GetAnswerFromCamera()
         {
             while (answerFromCamera == null) { }
-            // Stop register value change            
-            await firestoreChangeListener.StopAsync();
+            // Stop register value change
+            await firestoreChangeListenerAnswer.StopAsync();
             return answerFromCamera;
         }
 
@@ -137,6 +115,33 @@ namespace CameraQQQ.Services
                                     getCandidate(json);
                                 }
                             }
+                        }
+                    }
+                }
+            });
+        }
+
+        public FirestoreChangeListener ListenForAnswerFromCameraChange()
+        {
+            return documentReference.Listen(snapshot =>
+            {
+                if (snapshot.Exists)
+                {
+                    foreach (var field in snapshot.ToDictionary())
+                    {
+                        if (field.Key == "Answer")
+                        {
+                            if (answerFromCamera == null && field.Value != null && field.Value.ToString()!.Length > 0)
+                            {
+                                dynamic answer = field.Value;
+                                if (answer.Count > 0)
+                                    answerFromCamera = new Answer
+                                    {
+                                        type = answer["type"],
+                                        sdp = answer["sdp"]
+                                    };
+                            }
+                            break;
                         }
                     }
                 }
