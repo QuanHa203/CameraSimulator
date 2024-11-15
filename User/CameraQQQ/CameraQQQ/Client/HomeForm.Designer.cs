@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace CameraQQQ.User
+namespace CameraQQQ.Client
 {
     partial class HomeForm
     {

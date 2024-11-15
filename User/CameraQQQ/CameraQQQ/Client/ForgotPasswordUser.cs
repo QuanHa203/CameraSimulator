@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CameraQQQ.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,11 +10,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CameraQQQ.User
+namespace CameraQQQ.Client
 {
     public partial class ForgotPasswordUser : Form
     {
-        public static UserLogin userLogin;
         public ForgotPasswordUser()
         {
             InitializeComponent();
