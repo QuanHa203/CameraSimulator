@@ -1,9 +1,6 @@
 ﻿using CameraServer.Models;
-using CameraServer.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
-using System.Net;
 
 namespace CameraServer.Controllers
 {
@@ -22,11 +19,11 @@ namespace CameraServer.Controllers
         {
             User newUser = new User
             {
-                IdRole = user.IdRole,
+                IdRole = 2,
                 UserName = user.UserName,
                 Password = user.Password,
                 Email = user.Email,
-                IsBan = user.IsBan,
+                IsBan = false
             };
 
             var checkRole = _context.Roles.Any(role => role.Id == newUser.IdRole);
@@ -46,8 +43,6 @@ namespace CameraServer.Controllers
 
         public class RegisterUser
         {
-            public int IdRole { get; set; }
-
             [StringLength(100)]
             public string UserName { get; set; } = null!;
 
@@ -56,8 +51,6 @@ namespace CameraServer.Controllers
 
             [StringLength(100)]
             public string Email { get; set; } = null!;
-
-            public bool? IsBan { get; set; }
         }
     }
 }

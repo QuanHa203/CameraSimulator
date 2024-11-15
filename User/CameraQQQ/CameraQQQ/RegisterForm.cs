@@ -1,4 +1,5 @@
 ﻿using CameraQQQ.Models;
+using CameraQQQ.Services;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -18,37 +19,30 @@ namespace Register
 
         private async void btnRegister_Click(object sender, EventArgs e)
         {
-            await RegisterUser();
+            RegisterUser();
         }
 
-        private async Task RegisterUser()
+        private void RegisterUser()
         {
-            using (var httpClient = new HttpClient())
+            var url = "/api/RegisterUser/register";
+            var user = new User
             {
-                var url = "https://localhost:7268/api/RegisterUser/register";
+                UserName = txtUsername.Text,
+                Password = txtPassword.Text,
+                Email = txtEmail.Text,
+                IdRole = int.Parse(txtRole.Text)
+            };
 
-                var user = new User
-                {
-                    UserName = txtUsername.Text,
-                    Password = txtPassword.Text,
-                    Email = txtEmail.Text,
-                    IdRole = int.Parse(txtRole.Text)
-                };
-
-                var json = JsonConvert.SerializeObject(user);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                try
-                {
-                    var response = await httpClient.PostAsync(url, content);
-                    response.EnsureSuccessStatusCode();
-                    MessageBox.Show("Đăng ký thành công!");
-                    this.Close();
-                }
-                catch (HttpRequestException ex)
-                {
-                    MessageBox.Show($"Error: {ex.Message}");
-                }
+            var json = JsonConvert.SerializeObject(user);            
+            var response = SendRequestToServer.SendRequest(HttpMethod.Post, url, json);
+                                    
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                MessageBox.Show("Đăng ký thành công");
+            }
+            else
+            {
+                MessageBox.Show(response.Data);
             }
         }
     }

@@ -3,93 +3,85 @@ const servers = {
         {
             urls: [
                 'stun:stun.l.google.com:19302',
-//                'stun:stun1.l.google.com:19302',
-//                'stun:stun2.l.google.com:19302'
+                //                'stun:stun1.l.google.com:19302',
+                //                'stun:stun2.l.google.com:19302'
             ],
         },
     ],
     iceCandidatePoolSize: 10,
 };
+
+const peerConnections = {};
+let mediaStream;
+
 const camera = new RTCPeerConnection(servers);
 const soundFromSender = document.getElementById("sound-from-sender");
 
 navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment", width: { ideal: 1920 }, height: { ideal: 1080 }, frameRate: { ideal: 30 } }, audio: true })
     .then(stream => {
+        mediaStream = stream;
         document.getElementById('local-video-stream').srcObject = stream;
-        stream.getTracks().forEach(track => camera.addTrack(track, stream));
     });
 
-camera.onicecandidate = (ev) => {
-    if (ev.candidate) {
-        // Send ICE Candidate to Anroid
-        Android.receiveIceCandidate(JSON.stringify(ev.candidate));
+// function call from Java
+function handlerOfferFromSenders(offer, userName) {
+    const peerConnection = new RTCPeerConnection(servers);
+    peerConnections[userName] = peerConnection;
+
+    mediaStream.getTracks().forEach(track => peerConnection.addTrack(track, mediaStream));
+    peerConnection.onicecandidate = (ev) => {
+        if (ev.candidate) {
+            // Send ICE Candidate to Android
+            Android.receiveIceCandidate(JSON.stringify(ev.candidate), userName);
+        }
+    }
+
+    peerConnection.ontrack = ev => {
+        soundFromSender.srcObject = ev.streams[0];
+    }
+
+    peerConnection.oniceconnectionstatechange = () => {
+        console.log(peerConnection.iceConnectionState);
+        if (peerConnection.iceConnectionState === "disconnected") {
+            peerConnection.close();
+
+            // Send request disconnect to Android
+            Android.disconnect(userName);
+        }
+    };
+
+    setOfferFromSender(offer, userName)
+}
+
+// function call from Java
+function setIceCandidateFromSender(iceCandidates, userName) {
+    console.log(iceCandidates);
+    for (let candidate of iceCandidates) {
+        // Thêm vào peerConnection
+        peerConnections[userName].addIceCandidate(candidate)
+            .then()
+            .catch(err => console.error("Error adding ICE candidate:", err))
     }
 }
 
-camera.ontrack = ev => {
-    console.log(ev.streams[0]);
-    soundFromSender.srcObject = ev.streams[0];
+function setOfferFromSender(offer, userName) {
+    peerConnections[userName].setRemoteDescription(offer)
+        .then(v => createAnswer(userName))
+        .catch(err => console.log("Error: " + err))
 }
 
-function setOfferFromSender(offer) {
-    camera.setRemoteDescription(offer)
-        .then(v => {
-            createAnswer()
-        })
-        .catch(err => {
-            console.log("Error: " + err);
-        })
-}
-
-function createAnswer() {
-    camera.createAnswer()
+function createAnswer(userName) {
+    peerConnections[userName].createAnswer()
         .then(answer => {
             // Set answer created
-            camera.setLocalDescription(answer)
+            peerConnections[userName].setLocalDescription(answer)
                 .then(v => {
-                    sendAnswerToAndroid();
+                    // Send answer to Android
+                    Android.receiveAnswer(JSON.stringify(peerConnections[userName].localDescription), userName);
                 })
                 .catch(err => {
                     console.log("Error: " + err);
                 })
         })
-        .catch(err => {
-            console.log("Error: " + err);
-            // if(camera.localDescription == null)
-        })
-}
-
-function sendAnswerToAndroid() {
-    // Send answer to Android
-    Android.receiveAnswer(JSON.stringify(camera.localDescription));
-    console.log(camera);
-}
-
-function setIceCandidateFromSender(iceCandidates) {
-    for (let candidate of iceCandidates) {
-        const iceCandidate = new RTCIceCandidate(candidate);
-        // Thêm vào peerConnection
-        camera.addIceCandidate(iceCandidate)
-            .then(v => {
-
-            })
-            .catch(err => {
-                console.error("Error adding ICE candidate:", err);
-            })
-    }
-}
-
-camera.oniceconnectionstatechange = () => {
-    console.log("ICE Connection State:", camera.iceConnectionState);
-
-    if (camera.iceConnectionState === "disconnected") {
-        camera.close();        
-        Android.disconnect();        
-        Android.refreshActivity();
-    }
-    
-};
-
-camera.onicegatheringstatechange = () => {
-    console.log("ICE Gathering State:", camera.iceGatheringState);
+        .catch(err => console.log("Error: " + err))
 }

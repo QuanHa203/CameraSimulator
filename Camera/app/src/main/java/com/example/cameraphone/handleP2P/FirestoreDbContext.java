@@ -1,15 +1,15 @@
 package com.example.cameraphone.handleP2P;
 
+import android.app.Activity;
+
 import com.example.cameraphone.activity.LoginActivity;
+import com.example.cameraphone.activity.MainActivity;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.FirebaseFirestoreSettings;
-import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.MetadataChanges;
-import com.google.firebase.firestore.Source;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -22,12 +22,12 @@ public class FirestoreDbContext {
     private static  FirestoreDbContext instance;
     private FirebaseFirestore firestoreDb;
     private DocumentReference documentReference;
-    private ListenerRegistration listenerRegistrationOffer;
-    private Object _offer = null;
+
+    private ArrayList<String> offerWasSet = new ArrayList<String>();
+    private HashMap<String, Integer> iceCandidateWasSet = new HashMap<String, Integer>();
     private FirestoreDbContext() {
         firestoreDb = FirebaseFirestore.getInstance();
-        documentReference = firestoreDb.collection("Signaling").document(LoginActivity._camera.getConnectionCode()).collection("HaQuan").document("HaQuan");
-        listenerRegistrationOffer = listenForOfferUser();
+        documentReference = firestoreDb.document("Signaling/" + LoginActivity._camera.getConnectionCode());
     }
 
     public static FirestoreDbContext getInstance() {
@@ -36,47 +36,22 @@ public class FirestoreDbContext {
         return instance;
     }
 
-    public void updateAnswer(String answer) {
+    public void updateAnswer(String answer, String userName) {
         Type mapType = new TypeToken<Map<String, Object>>() {}.getType();
         Map<String, Object> answerJson = new Gson().fromJson(answer, mapType);
 
-        Map<String, Object> updateAnswer = new HashMap<>();
-        updateAnswer.put("Answer", answerJson);
-        documentReference.update(updateAnswer);
+        documentReference.update(userName + ".Answer", answerJson);
     }
 
-    public void updateCandidate(String candidate) {
+    public void updateCandidate(String candidate, String userName) {
         Type mapType = new TypeToken<Map<String, Object>>() {}.getType();
         Map<String, Object> candidateValue = new Gson().fromJson(candidate, mapType);
 
-        documentReference.update("ICECandidateCamera", FieldValue.arrayUnion(candidateValue));
+        documentReference.update(userName + ".ICECandidateCamera", FieldValue.arrayUnion(candidateValue));
     }
 
-    public void listenForIceCandidateUser(Callback cb) {
-        documentReference.addSnapshotListener((DocumentSnapshot data, FirebaseFirestoreException exception) -> {
-            if (exception != null)
-                return;
-
-            if(data == null)
-                return;
-
-            if(!data.exists())
-                return;
-
-            Map<String, Object> json = data.getData();
-            if(json.containsKey("ICECandidateUser")) {
-
-                ArrayList<Object> iceCandidateArrayList = (ArrayList<Object>) json.get("ICECandidateUser");
-                if(iceCandidateArrayList.size() == 0)
-                    return;
-
-                cb.setCandidate(iceCandidateArrayList);
-            }
-        });
-    }
-
-    public ListenerRegistration listenForOfferUser() {
-        return documentReference.addSnapshotListener(MetadataChanges.INCLUDE, (DocumentSnapshot data, FirebaseFirestoreException exception) -> {
+    public void listenForOfferUsers(Activity activity) {
+        documentReference.addSnapshotListener(activity, MetadataChanges.INCLUDE, (DocumentSnapshot data, FirebaseFirestoreException exception) -> {
             if (exception != null)
                 return;
 
@@ -89,32 +64,79 @@ public class FirestoreDbContext {
             if(data.getMetadata().isFromCache())
                 return;
 
-            Map<String, Object> json = data.getData();
-            if(json.containsKey("Offer")) {
-                Map<String, Object> offerValue = (HashMap<String, Object>)json.get("Offer");
+            Object[] userNames = data.getData().keySet().toArray();
+            Object[] fields =  data.getData().values().toArray();
+
+            for(int i = 0; i < fields.length; i++) {
+                if(offerWasSet.contains(userNames[i]))
+                    continue;
+
+                HashMap<String, Object> userValue = (HashMap<String, Object>) fields[i];
+                if(!userValue.containsKey("Offer") )
+                    continue;
+
+                Map<String, Object> offerValue = (HashMap<String, Object>) userValue.get("Offer");
                 if(offerValue.size() == 0)
-                    _offer = null;
-                else
-                    _offer = offerValue;
+                    continue;
+
+                String userName = userNames[i].toString();
+                String offerJson = new Gson().toJson(offerValue);
+
+                activity.runOnUiThread(() -> {
+                    // Set offer from user
+                    MainActivity.webView.evaluateJavascript("javascript:handlerOfferFromSenders(" + offerJson +", '" + userName + "');", null);
+                });
+
+                offerWasSet.add(userName);
             }
         });
     }
 
-    public String getOfferFromUser() {
-        while (_offer == null) { }
-        return new Gson().toJson(_offer);
+    public void listenForIceCandidateUser(Activity activity) {
+        documentReference.addSnapshotListener((DocumentSnapshot data, FirebaseFirestoreException exception) -> {
+            if (exception != null)
+                return;
+
+            if(data == null)
+                return;
+
+            if(!data.exists())
+                return;
+
+            Object[] userNames = data.getData().keySet().toArray();
+            Object[] fields =  data.getData().values().toArray();
+
+            for(int i = 0; i < fields.length; i++) {
+                HashMap<String, Object> userValue = (HashMap<String, Object>) fields[i];
+                if(!userValue.containsKey("ICECandidateUser") )
+                    continue;
+
+                ArrayList<Object> iceCandidateArrayList = (ArrayList<Object>) userValue.get("ICECandidateUser");
+                if(iceCandidateArrayList.size() == 0)
+                    continue;
+
+                if(iceCandidateWasSet.containsKey(userNames[i].toString()) && iceCandidateWasSet.get(userNames[i].toString()) == iceCandidateArrayList.size())
+                    continue;
+
+                String userName = userNames[i].toString();
+                String iceCandidateJson = new Gson().toJson(iceCandidateArrayList);
+
+                activity.runOnUiThread(() -> {
+                    // Set ICE candidate from user
+                    MainActivity.webView.evaluateJavascript("javascript:setIceCandidateFromSender(" + iceCandidateJson +", '" + userName + "');", null);
+                });
+
+                iceCandidateWasSet.put(userNames[i].toString(), iceCandidateArrayList.size());
+            }
+        });
     }
 
-    public void setNullOffer() {
-        _offer = null;
-    }
-
-    public void disconnect() {
+    public void disconnect(String userName) {
         Map<String, Object> disconnectValue = new HashMap<>();
-        disconnectValue.put("Offer", new HashMap<String, Object>());
-        disconnectValue.put("Answer", new HashMap<String, Object>());
-        disconnectValue.put("ICECandidateCamera", new ArrayList());
-        disconnectValue.put("ICECandidateUser", new ArrayList());
-        documentReference.set(disconnectValue);
+        disconnectValue.put(userName + ".Offer", new HashMap<String, Object>());
+        disconnectValue.put(userName + ".Answer", new HashMap<String, Object>());
+        disconnectValue.put(userName + ".ICECandidateCamera", new ArrayList());
+        disconnectValue.put(userName + ".ICECandidateUser", new ArrayList());
+        documentReference.update(disconnectValue);
     }
 }

@@ -1,19 +1,12 @@
-﻿using CameraQQQ.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
+using CameraQQQ.Models;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace CameraQQQ.Client
 {
     public partial class ForgotPasswordUser : Form
     {
+        public static User userLogin;
         public ForgotPasswordUser()
         {
             InitializeComponent();

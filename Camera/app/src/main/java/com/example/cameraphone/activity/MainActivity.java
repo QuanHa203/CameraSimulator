@@ -16,7 +16,7 @@ import com.example.cameraphone.handleP2P.P2PInterface;
 import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity {
-    private WebView webView;
+    public static WebView webView;
     private boolean isPageLoaded = false;
     private P2PInterface p2PInterface;
 
@@ -63,25 +63,11 @@ public class MainActivity extends AppCompatActivity {
         new Thread(() -> {
             while (!isPageLoaded) {}
 
-            // Get Offer from User
-            String offerJson = FirestoreDbContext.getInstance().getOfferFromUser();
-
-            runOnUiThread(() -> {
-                // set Offer From Sender to Camera
-                webView.evaluateJavascript("javascript:setOfferFromSender(" + offerJson + ");", null);
-            });
-
-            // Get Amswer from JavaScript to save in Firebase
-            String answer = p2PInterface.getAnswer();
-
-            // Save Amswer in Firebase
-            FirestoreDbContext.getInstance().updateAnswer(answer);
+            // Get Offer and Set Offer from User
+            FirestoreDbContext.getInstance().listenForOfferUsers(this);
 
             // Set ICE Candidate from User
-            FirestoreDbContext.getInstance().listenForIceCandidateUser(candidate -> {
-                String candidateJson = new Gson().toJson(candidate);
-                runOnUiThread(() -> webView.evaluateJavascript("javascript:setIceCandidateFromSender(" + candidateJson + ");", null));
-            });
+            FirestoreDbContext.getInstance().listenForIceCandidateUser(this);
         }).start();
     }
 }

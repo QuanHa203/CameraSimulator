@@ -34,72 +34,19 @@ navigator.mediaDevices.getUserMedia({ audio: true, video: true })
     });
 
 sender.ontrack = (ev) => {
-    console.log(sender);
     cameraVideoStream.srcObject = ev.streams[0];
     cameraVideoStream.style.transform = "rotate(-90deg)";
 };
 
 sender.onicecandidate = (ev) => {
     if (ev.candidate) {
-        // Send candidate to Firebase    
+        // Send candidate to Firebase
         callCSharp.SetIceCandidateUser(JSON.stringify(ev.candidate));
     }
 };
 
-function createOffer() {
-
-    // Create Offer
-    sender.createOffer()
-        .then(offer => {
-
-            // Save offer to sender
-            sender.setLocalDescription(offer)
-                .then(v => {
-
-                    // Set offer to save in firebase
-                    if (sender.localDescription != null)
-                        callCSharp.SetOffer(JSON.stringify(sender.localDescription));
-                })
-                .catch(err => console.log(err));
-        })
-        .catch(err => console.log("Error Set Offer: " + err));
-}
-
-function setAnswerFromCamera(answer) {    
-    console.log(pendingCandidates);
-    sender.setRemoteDescription(answer)
-        .then(v => {
-            pendingCandidates.forEach(candidate => sender.addIceCandidate(candidate));
-            pendingCandidates = []; // Xóa danh sách sau khi đã thêm            
-        })
-        .catch(err => {
-            console.log("setRemoteDescription fail - Error: " + err)            
-        });
-
-    if (sender.remoteDescription) {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
-
-function setIceCandidateFromCamera(candidate) {
-
-    if (sender.remoteDescription) {
-        sender.addIceCandidate(JSON.parse(candidate))
-            .then()
-            .catch(err => console.log(err));
-    }
-    else {
-        pendingCandidates.push(JSON.parse(candidate));
-    }
-
-}
-
 sender.oniceconnectionstatechange = async () => {
     console.log("ICE Connection State:", sender.iceConnectionState);
-
     if (sender.iceConnectionState === "connected") {
         callCSharp.NotifyCameraConnected();
     }
@@ -110,14 +57,59 @@ sender.oniceconnectionstatechange = async () => {
     }
 };
 
+// Call via C#
+function createOffer() {
+    // Create Offer
+    sender.createOffer()
+        .then(offer => {
+
+            // Save offer to RTCPeerConnection
+            sender.setLocalDescription(offer)
+                .then(v => {
+                    // Set offer to save in firebase
+                    if (sender.localDescription != null)
+                        callCSharp.SetOffer(JSON.stringify(sender.localDescription));
+                })
+                .catch(err => console.log(err));
+        })
+        .catch(err => console.log("Error Set Offer: " + err));
+}
+
+// Call via C#
+function setAnswerFromCamera(answer) {    
+    sender.setRemoteDescription(answer)
+        .then(v => {
+            pendingCandidates.forEach(candidate => sender.addIceCandidate(candidate));
+            pendingCandidates = []; // Xóa danh sách sau khi đã thêm            
+        })
+        .catch(err => {
+            console.log("setRemoteDescription fail - Error: " + err)
+        });
+}
+
+// Call via C#
+function setIceCandidateFromCamera(candidate) {    
+    if (sender.remoteDescription) {
+        sender.addIceCandidate(JSON.parse(candidate))
+            .then()
+            .catch(err => console.log(err));
+    }
+    else {
+        pendingCandidates.push(JSON.parse(candidate));
+    }
+}
+
+// Call via C#
 function turnOnVolume() {
     cameraVideoStream.muted = false;
 }
 
+// Call via C#6
 function turnOffVolume() {
     cameraVideoStream.muted = true;
 }
 
+// Call via C#
 function turnOnMicro() {
     if (audioTrack == null)
         return;
@@ -125,6 +117,7 @@ function turnOnMicro() {
     audioTrack.enabled = true;
 }
 
+// Call via C#
 function turnOffMicro() {
     if (audioTrack == null)
         return;
