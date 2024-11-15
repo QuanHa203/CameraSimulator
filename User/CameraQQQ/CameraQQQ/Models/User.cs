@@ -8,12 +8,13 @@ namespace CameraQQQ.Models
 {
     public class User
     {
+        public int Id { get; set; }
         public int IdRole { get; set; }
-        public string UserName { get; set; }
+        public int IdVideo { get; set; }
+        public string UserName { get; set; } = "";
         public string? Password { get; set; }
-        public string Email { get; set; }
+        public string Email { get; set; } = "";
         public bool IsBan { get; set; }
-        public string Cookie { get; set; }
-        public string ConnectionCode { get; set; }
+        public string ConnectionCode { get; set; } = "";
     }
 }

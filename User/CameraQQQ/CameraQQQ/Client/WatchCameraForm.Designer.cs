@@ -42,7 +42,7 @@
             labelCameraName.BackColor = Color.Transparent;
             labelCameraName.FlatStyle = FlatStyle.Flat;
             labelCameraName.ForeColor = Color.Black;
-            labelCameraName.Location = new Point(357, 10);
+            labelCameraName.Location = new Point(379, 10);
             labelCameraName.Name = "labelCameraName";
             labelCameraName.Size = new Size(81, 15);
             labelCameraName.TabIndex = 0;
@@ -58,7 +58,7 @@
             btnMic.FlatAppearance.MouseDownBackColor = Color.White;
             btnMic.FlatAppearance.MouseOverBackColor = Color.White;
             btnMic.FlatStyle = FlatStyle.Flat;
-            btnMic.Location = new Point(329, 47);
+            btnMic.Location = new Point(351, 47);
             btnMic.Name = "btnMic";
             btnMic.Size = new Size(40, 40);
             btnMic.TabIndex = 1;
@@ -75,7 +75,7 @@
             btnVolume.FlatAppearance.MouseDownBackColor = Color.White;
             btnVolume.FlatAppearance.MouseOverBackColor = Color.White;
             btnVolume.FlatStyle = FlatStyle.Flat;
-            btnVolume.Location = new Point(419, 47);
+            btnVolume.Location = new Point(441, 47);
             btnVolume.Name = "btnVolume";
             btnVolume.Padding = new Padding(30, 0, 30, 0);
             btnVolume.Size = new Size(40, 40);
@@ -89,9 +89,9 @@
             panel1.Controls.Add(labelCameraName);
             panel1.Controls.Add(btnMic);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 350);
+            panel1.Location = new Point(0, 351);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 100);
+            panel1.Size = new Size(814, 100);
             panel1.TabIndex = 3;
             // 
             // panelWeb
@@ -99,7 +99,7 @@
             panelWeb.Dock = DockStyle.Fill;
             panelWeb.Location = new Point(0, 0);
             panelWeb.Name = "panelWeb";
-            panelWeb.Size = new Size(800, 350);
+            panelWeb.Size = new Size(814, 351);
             panelWeb.TabIndex = 4;
             // 
             // WatchCameraForm
@@ -109,11 +109,12 @@
             AutoScroll = true;
             BackColor = Color.White;
             BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(814, 451);
             Controls.Add(panelWeb);
             Controls.Add(panel1);
             ForeColor = Color.Transparent;
             Name = "WatchCameraForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "WatchCameraForm";
             FormClosed += WatchCameraForm_FormClosed;
             Load += WatchCameraForm_Load;

@@ -27,8 +27,6 @@ public partial class User
 
     public bool? IsBan { get; set; }
 
-    public string? Cookie { get; set; } = null!;
-
     [ForeignKey("IdRole")]
     [InverseProperty("Users")]
     public virtual Role IdRoleNavigation { get; set; } = null!;

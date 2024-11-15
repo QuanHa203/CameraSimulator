@@ -1,4 +1,5 @@
 ﻿using CameraServer.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CameraServer.Controllers
@@ -12,6 +13,7 @@ namespace CameraServer.Controllers
         {
             _context = context;
         }
+
         [HttpGet("UserList")]
         public IActionResult GetUserList()
         {

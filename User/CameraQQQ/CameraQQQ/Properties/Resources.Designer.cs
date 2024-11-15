@@ -161,20 +161,22 @@ namespace CameraQQQ.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static string micOff {
+        internal static System.Drawing.Bitmap micOff {
             get {
-                return ResourceManager.GetString("micOff", resourceCulture);
+                object obj = ResourceManager.GetObject("micOff", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static string micOn {
+        internal static System.Drawing.Bitmap micOn {
             get {
-                return ResourceManager.GetString("micOn", resourceCulture);
+                object obj = ResourceManager.GetObject("micOn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -194,6 +196,26 @@ namespace CameraQQQ.Properties {
         internal static System.Drawing.Bitmap user_icon {
             get {
                 object obj = ResourceManager.GetObject("user-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap volumeOff {
+            get {
+                object obj = ResourceManager.GetObject("volumeOff", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap volumeOn {
+            get {
+                object obj = ResourceManager.GetObject("volumeOn", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -1,10 +1,10 @@
-﻿using CameraQQQ.Services;
-using CameraQQQ.P2PConnection;
+﻿using CameraQQQ.P2PConnection;
 using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.WinForms;
 using Newtonsoft.Json;
 using System.Security.Permissions;
 using System.Runtime.CompilerServices;
+using Google.Cloud.Firestore;
 
 namespace CameraQQQ.Client
 {
@@ -24,11 +24,13 @@ namespace CameraQQQ.Client
             {
                 if (isMicOn)
                 {
+                    btnMic.BackgroundImage!.Dispose();
                     btnMic.BackgroundImage = Properties.Resources.micOff;
                     webView2.CoreWebView2.ExecuteScriptAsync("turnOffMicro();");
                 }
                 else
                 {
+                    btnMic.BackgroundImage!.Dispose();
                     btnMic.BackgroundImage = Properties.Resources.micOn;
                     webView2.CoreWebView2.ExecuteScriptAsync("turnOnMicro();");
                 }
@@ -46,24 +48,42 @@ namespace CameraQQQ.Client
             {
                 if (isVolumeOn)
                 {
+                    btnVolume.BackgroundImage!.Dispose();
                     btnVolume.BackgroundImage = Properties.Resources.volumeOff;
                     webView2.CoreWebView2.ExecuteScriptAsync("turnOffVolume();");
                 }
                 else
                 {
+                    btnVolume.BackgroundImage!.Dispose();
                     btnVolume.BackgroundImage = Properties.Resources.volumeOn;
                     webView2.CoreWebView2.ExecuteScriptAsync("turnOnVolume();");
                 }
                 isVolumeOn = value;
             }
-        }
-        private WebView2 webView2;
-
-        EventHandler<CoreWebView2WebMessageReceivedEventArgs> messageReceivedHandlerPermissionState;
+        }        
+        private EventHandler<CoreWebView2WebMessageReceivedEventArgs> messageReceivedHandlerPermissionState = null!;
+        public WebView2 webView2 = null!;
 
         public WatchCameraForm()
         {
             InitializeComponent();
+            InitWebView();
+        }
+
+        private async void WatchCameraForm_Load(object sender, EventArgs e)
+        {
+            await webView2.EnsureCoreWebView2Async();
+
+            // Create Object callCSharp in JS
+            webView2.CoreWebView2.AddHostObjectToScript("callCSharp", new CallCShapFromJavaScript());
+
+
+            // Register event
+            webView2.CoreWebView2.WebMessageReceived += messageReceivedHandlerPermissionState;
+        }
+
+        public void InitWebView()
+        {
             webView2 = new WebView2()
             {
                 Dock = DockStyle.Fill,
@@ -71,22 +91,11 @@ namespace CameraQQQ.Client
 
             webView2.Source = new Uri(_webPath);
             panelWeb.Controls.Add(webView2);
+            messageReceivedHandlerPermissionState += HandlePermissionState!;
+            
         }
 
-        private async void WatchCameraForm_Load(object sender, EventArgs e)
-        {
-             await webView2.EnsureCoreWebView2Async();
-
-            // Create Object callCSharp in JS
-            webView2.CoreWebView2.AddHostObjectToScript("callCSharp", new CallCShapFromJavaScript());
-
-            messageReceivedHandlerPermissionState = HandlePermissionState;
-
-            // Register event
-            webView2.CoreWebView2.WebMessageReceived += messageReceivedHandlerPermissionState;
-        }
-
-        private async void HandlePermissionState(object s, CoreWebView2WebMessageReceivedEventArgs e)
+        private void HandlePermissionState(object s, CoreWebView2WebMessageReceivedEventArgs e)
         {
             string message = e.TryGetWebMessageAsString();
 
@@ -107,20 +116,18 @@ namespace CameraQQQ.Client
         private async Task ExecutePeerToPeerConnectionAsync()
         {
             // Call webView2.CoreWebView2.ExecuteScriptAsync() by main thread. Because WebView2 is must execute in UI thread,
-            Task t = this.Invoke(async () =>
+            await this.Invoke(async () =>
             {
                 // Create Answer
                 await webView2.CoreWebView2.ExecuteScriptAsync("createOffer();");
-            });
+            });            
 
-            // Init new thread to listen answer and then set answer to RTCPeerConnection.
-            Task t1 = Task.Run(async () =>
+            // Init new thread to listen answer and then set answer to RTCPeerConnection.            
+            FirestoreDbContext.Instance.ListenForAnswerFromCameraChange((answer) =>
             {
-                var answer = await FirestoreDbContext.Instance.GetAnswerFromCamera();
                 Task t = this.Invoke(async () =>
-                {
-                    string jsonAnswer = JsonConvert.SerializeObject(answer);
-                    await webView2.CoreWebView2.ExecuteScriptAsync($"setAnswerFromCamera({jsonAnswer});");
+                {                    
+                    await webView2.CoreWebView2.ExecuteScriptAsync($"setAnswerFromCamera({answer});");
                 });
             });
 
@@ -132,16 +139,13 @@ namespace CameraQQQ.Client
                     webView2.CoreWebView2.ExecuteScriptAsync($"setIceCandidateFromCamera('{candidate}')");
                 });
             });
-
-            Task t2 = Task.Run(() =>
-            {
-                while (CallCShapFromJavaScript.IsDisconnected == null || CallCShapFromJavaScript.IsDisconnected == true) { }        
-                WatchCameraForm_Load(new object(), new EventArgs());
-            });
         }
 
         private async void WatchCameraForm_FormClosed(object sender, FormClosedEventArgs e)
-            => await FirestoreDbContext.Instance.Disconnect();
+        {
+            await FirestoreDbContext.Instance.Disconnect();            
+            //webView2.Dispose();
+        }
 
         private void btnMic_Click(object sender, EventArgs e)
             => IsMicOn = !IsMicOn;

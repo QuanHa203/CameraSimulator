@@ -1,4 +1,4 @@
-﻿namespace CameraQQQ.User
+﻿namespace CameraQQQ.Client
 {
     partial class ForgotPasswordUser
     {

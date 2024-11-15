@@ -1,10 +1,5 @@
 ﻿using CameraServer.Models;
-using CameraServer.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
-using System.ComponentModel.DataAnnotations;
-using System.Net;
 
 
 namespace CameraServer.Controllers

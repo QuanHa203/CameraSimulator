@@ -1,6 +1,3 @@
-using CameraQQQ.Admin;
-using CameraQQQ.User;
-
 namespace CameraQQQ
 {
     internal static class Program
@@ -14,7 +11,7 @@ namespace CameraQQQ
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new DashboardForm());
+            Application.Run(new LoginForm());
         }
     }
 }
