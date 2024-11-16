@@ -1,4 +1,4 @@
-﻿namespace CameraQQQ.Admin
+﻿namespace CameraQQQ.Admin.User
 {
     partial class UpdateUserForm
     {
@@ -35,6 +35,9 @@
             txtUpdateEmail = new TextBox();
             txtUpdatePass = new TextBox();
             txtUpdateUser = new TextBox();
+            label5 = new Label();
+            btnIsBan = new CheckBox();
+            btnSaveUpdate = new Button();
             SuspendLayout();
             // 
             // label4
@@ -102,12 +105,48 @@
             txtUpdateUser.Size = new Size(330, 27);
             txtUpdateUser.TabIndex = 7;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Nirmala UI", 10.2F, FontStyle.Bold);
+            label5.ForeColor = Color.SteelBlue;
+            label5.Location = new Point(86, 259);
+            label5.Name = "label5";
+            label5.Size = new Size(40, 23);
+            label5.TabIndex = 14;
+            label5.Text = "Ban";
+            // 
+            // btnIsBan
+            // 
+            btnIsBan.AutoSize = true;
+            btnIsBan.Location = new Point(62, 264);
+            btnIsBan.Name = "btnIsBan";
+            btnIsBan.Size = new Size(18, 17);
+            btnIsBan.TabIndex = 15;
+            btnIsBan.UseVisualStyleBackColor = true;
+            // 
+            // btnSaveUpdate
+            // 
+            btnSaveUpdate.BackColor = Color.LightSeaGreen;
+            btnSaveUpdate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btnSaveUpdate.ForeColor = SystemColors.ButtonFace;
+            btnSaveUpdate.Location = new Point(247, 293);
+            btnSaveUpdate.Name = "btnSaveUpdate";
+            btnSaveUpdate.Size = new Size(98, 38);
+            btnSaveUpdate.TabIndex = 16;
+            btnSaveUpdate.Text = "Save";
+            btnSaveUpdate.UseVisualStyleBackColor = false;
+            btnSaveUpdate.Click += btnSaveUpdate_Click;
+            // 
             // UpdateUserForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(46, 51, 73);
-            ClientSize = new Size(569, 281);
+            ClientSize = new Size(569, 343);
+            Controls.Add(btnSaveUpdate);
+            Controls.Add(btnIsBan);
+            Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -131,5 +170,8 @@
         private TextBox txtUpdateEmail;
         private TextBox txtUpdatePass;
         private TextBox txtUpdateUser;
+        private Label label5;
+        private CheckBox btnIsBan;
+        private Button btnSaveUpdate;
     }
 }

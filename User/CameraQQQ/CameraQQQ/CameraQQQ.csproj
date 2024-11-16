@@ -21,6 +21,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Admin\User\CreateUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Admin\User\UpdateUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Admin\User\UserTableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

@@ -1,4 +1,4 @@
-﻿namespace CameraQQQ.Admin
+﻿namespace CameraQQQ.Admin.User
 {
     partial class CreateUserForm
     {
@@ -35,6 +35,7 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
+            btnSave = new Button();
             SuspendLayout();
             // 
             // txtCreateUser
@@ -102,12 +103,26 @@
             label4.TabIndex = 6;
             label4.Text = "Email";
             // 
+            // btnSave
+            // 
+            btnSave.BackColor = Color.LightSeaGreen;
+            btnSave.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSave.ForeColor = SystemColors.ButtonFace;
+            btnSave.Location = new Point(241, 276);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(94, 36);
+            btnSave.TabIndex = 7;
+            btnSave.Text = "Save";
+            btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
+            // 
             // CreateUserForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(46, 51, 73);
-            ClientSize = new Size(569, 281);
+            ClientSize = new Size(569, 333);
+            Controls.Add(btnSave);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -118,6 +133,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "CreateUserForm";
             Text = "CreateUserForm";
+            Load += CreateUserForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -131,5 +147,6 @@
         private Label label2;
         private Label label3;
         private Label label4;
+        private Button btnSave;
     }
 }

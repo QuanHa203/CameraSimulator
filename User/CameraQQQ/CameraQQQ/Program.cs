@@ -2,6 +2,7 @@
 
 
 using CameraQQQ.Admin;
+using CameraQQQ.Admin.User;
 using CameraQQQ.Client;
 
 namespace CameraQQQ
