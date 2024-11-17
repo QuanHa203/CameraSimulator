@@ -12,7 +12,7 @@ namespace CameraQQQ
 
     public partial class LoginForm : Form
     {
-        public static User User { get; set; }
+        public static User User { get; set; } = null!;
         public LoginForm()
         {
             InitializeComponent();
@@ -44,14 +44,17 @@ namespace CameraQQQ
                 if (User.IdRole == 1)
                 {
                     MessageBox.Show("Chào mừng admin");
-                    new DashboardForm().Show();
+                    this.Hide();
+                    new WatchCameraForm().ShowDialog();
+                    // new DashboardForm().Show();
                     this.Close();
                 }
                 else if (User.IdRole == 2)
                 {
                     MessageBox.Show("Chào mừng user");
-                    new HomeForm().Show();
-                    
+                    this.Hide();
+                    new WatchCameraForm().ShowDialog();
+                    // new HomeForm().Show();
                     this.Close();
                 }
             }

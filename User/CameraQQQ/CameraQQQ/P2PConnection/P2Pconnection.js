@@ -62,10 +62,11 @@ function createOffer() {
     // Create Offer
     sender.createOffer()
         .then(offer => {
-
+            console.log("Create offer success");
             // Save offer to RTCPeerConnection
             sender.setLocalDescription(offer)
                 .then(v => {
+                    console.log("Set offer success");
                     // Set offer to save in firebase
                     if (sender.localDescription != null)
                         callCSharp.SetOffer(JSON.stringify(sender.localDescription));
@@ -76,11 +77,11 @@ function createOffer() {
 }
 
 // Call via C#
-function setAnswerFromCamera(answer) {    
+function setAnswerFromCamera(answer) {
     sender.setRemoteDescription(answer)
         .then(v => {
-            pendingCandidates.forEach(candidate => sender.addIceCandidate(candidate));
-            pendingCandidates = []; // Xóa danh sách sau khi đã thêm            
+            console.log("Set answer success");
+            callCSharp.ListeningIceCandidate();
         })
         .catch(err => {
             console.log("setRemoteDescription fail - Error: " + err)
@@ -88,14 +89,11 @@ function setAnswerFromCamera(answer) {
 }
 
 // Call via C#
-function setIceCandidateFromCamera(candidate) {    
+function setIceCandidateFromCamera(candidate) {   
     if (sender.remoteDescription) {
-        sender.addIceCandidate(JSON.parse(candidate))
-            .then()
+        sender.addIceCandidate(candidate)
+            .then(v => console.log("Set IceCandidate success"))
             .catch(err => console.log(err));
-    }
-    else {
-        pendingCandidates.push(JSON.parse(candidate));
     }
 }
 

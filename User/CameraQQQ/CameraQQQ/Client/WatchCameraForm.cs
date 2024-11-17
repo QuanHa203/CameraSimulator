@@ -1,10 +1,6 @@
 ﻿using CameraQQQ.P2PConnection;
 using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.WinForms;
-using Newtonsoft.Json;
-using System.Security.Permissions;
-using System.Runtime.CompilerServices;
-using Google.Cloud.Firestore;
 
 namespace CameraQQQ.Client
 {
@@ -67,6 +63,11 @@ namespace CameraQQQ.Client
         public WatchCameraForm()
         {
             InitializeComponent();
+            LoginForm.User = new Models.User
+            {
+                UserName = "HaQuan",
+                ConnectionCode = "111111111"
+            };
             InitWebView();
         }
 
@@ -123,21 +124,13 @@ namespace CameraQQQ.Client
             });            
 
             // Init new thread to listen answer and then set answer to RTCPeerConnection.            
-            FirestoreDbContext.Instance.ListenForAnswerFromCameraChange((answer) =>
-            {
-                Task t = this.Invoke(async () =>
-                {                    
-                    await webView2.CoreWebView2.ExecuteScriptAsync($"setAnswerFromCamera({answer});");
-                });
-            });
+            FirestoreDbContext.Instance.ListenForAnswerFromCameraChange(this);
 
             // Listening IceCandidate in Firebase to set ICE Candidate to RTCPeerConnection
-            FirestoreDbContext.Instance.ListenForIceCandidatesCamera((candidate) =>
+            Task t = Task.Run(() =>
             {
-                this.Invoke(() =>
-                {
-                    webView2.CoreWebView2.ExecuteScriptAsync($"setIceCandidateFromCamera('{candidate}')");
-                });
+                while (CallCShapFromJavaScript.IsSetSuccessAnswer == false) { }
+                FirestoreDbContext.Instance.ListenForIceCandidatesCamera(this);
             });
         }
 

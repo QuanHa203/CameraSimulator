@@ -25,6 +25,7 @@ public class FirestoreDbContext {
 
     private ArrayList<String> offerWasSet = new ArrayList<String>();
     private HashMap<String, Integer> iceCandidateWasSet = new HashMap<String, Integer>();
+
     private FirestoreDbContext() {
         firestoreDb = FirebaseFirestore.getInstance();
         documentReference = firestoreDb.document("Signaling/" + LoginActivity._camera.getConnectionCode());
@@ -93,7 +94,7 @@ public class FirestoreDbContext {
     }
 
     public void listenForIceCandidateUser(Activity activity) {
-        documentReference.addSnapshotListener((DocumentSnapshot data, FirebaseFirestoreException exception) -> {
+        documentReference.addSnapshotListener(activity, MetadataChanges.INCLUDE, (DocumentSnapshot data, FirebaseFirestoreException exception) -> {
             if (exception != null)
                 return;
 
@@ -101,6 +102,9 @@ public class FirestoreDbContext {
                 return;
 
             if(!data.exists())
+                return;
+
+            if(data.getMetadata().isFromCache())
                 return;
 
             Object[] userNames = data.getData().keySet().toArray();
@@ -112,18 +116,26 @@ public class FirestoreDbContext {
                     continue;
 
                 ArrayList<Object> iceCandidateArrayList = (ArrayList<Object>) userValue.get("ICECandidateUser");
+                int iceCandidateArrayListSize = iceCandidateArrayList.size();
+
                 if(iceCandidateArrayList.size() == 0)
                     continue;
 
-                if(iceCandidateWasSet.containsKey(userNames[i].toString()) && iceCandidateWasSet.get(userNames[i].toString()) == iceCandidateArrayList.size())
-                    continue;
-
                 String userName = userNames[i].toString();
+
+                if(iceCandidateWasSet.containsKey(userNames[i].toString()) && iceCandidateWasSet.get(userNames[i].toString()) == iceCandidateArrayList.size()) {
+                    activity.runOnUiThread(() -> {
+                        // Set ICE candidate from user
+                        MainActivity.webView.evaluateJavascript("javascript:setIceCandidateFromSender('" + userName + "');", null);
+                    });
+                    continue;
+                }
+
                 String iceCandidateJson = new Gson().toJson(iceCandidateArrayList);
 
                 activity.runOnUiThread(() -> {
-                    // Set ICE candidate from user
-                    MainActivity.webView.evaluateJavascript("javascript:setIceCandidateFromSender(" + iceCandidateJson +", '" + userName + "');", null);
+                    // Push IceCandidate in Queue
+                    MainActivity.webView.evaluateJavascript("javascript:pushIceCandidateInPending(" + iceCandidateJson +", '" + userName + "');", null);
                 });
 
                 iceCandidateWasSet.put(userNames[i].toString(), iceCandidateArrayList.size());
@@ -138,5 +150,8 @@ public class FirestoreDbContext {
         disconnectValue.put(userName + ".ICECandidateCamera", new ArrayList());
         disconnectValue.put(userName + ".ICECandidateUser", new ArrayList());
         documentReference.update(disconnectValue);
+
+        offerWasSet.remove(userName);
+        iceCandidateWasSet.remove(userName);
     }
 }

@@ -1,4 +1,5 @@
-﻿using Google.Cloud.Firestore;
+﻿using CameraQQQ.Client;
+using Google.Cloud.Firestore;
 using Newtonsoft.Json;
 
 namespace CameraQQQ.P2PConnection;
@@ -31,7 +32,7 @@ public class FirestoreDbContext
 
     private FirestoreDbContext()
     {
-        //string pathToServiceAccountKey = $"{Directory.GetCurrentDirectory()}{Path.DirectorySeparatorChar}camerasimulator-91360-firebase-adminsdk-ji7ap-de067214a8.json";
+        //string pathToServiceAccountKey = $"{Directory.GetCurrentDirectory()}{Path.DirectorySeparatorChar}camerasimulator-91360-firebase-adminsdk-ji7ap-de067214a8.json";        
 
         string pathToServiceAccountKey = $"{Directory.GetCurrentDirectory()}{Path.DirectorySeparatorChar}P2PConnection{Path.DirectorySeparatorChar}webrct-demo-f9ec7-firebase-adminsdk-7apu4-0299f8b8c9.json";
 
@@ -66,12 +67,12 @@ public class FirestoreDbContext
             });
         }
         catch { }
-    }        
+    }
 
     private async Task StopListernerAnswer()
     => await listenerAnswer.StopAsync();
 
-    public void ListenForAnswerFromCameraChange(Action<string> setAnswer)
+    public void ListenForAnswerFromCameraChange(WatchCameraForm watchCameraForm)
     {
         var docRef = firestoreDb.Document($"{collectionName}/{LoginForm.User.ConnectionCode}");
         listenerAnswer = docRef.Listen(async (snapshot) =>
@@ -100,14 +101,17 @@ public class FirestoreDbContext
             if (answerValue.Count == 0)
                 return;
 
-            string jsonAnswer = JsonConvert.SerializeObject(answer);
-            setAnswer(jsonAnswer);
+            string jsonAnswer = JsonConvert.SerializeObject(answer);            
+            watchCameraForm.Invoke(() =>
+            {
+                watchCameraForm.webView2.CoreWebView2.ExecuteScriptAsync($"setAnswerFromCamera({jsonAnswer})");
+            });
 
             await StopListernerAnswer();
         });
     }
 
-    public void ListenForIceCandidatesCamera(Action<string> getCandidate)
+    public void ListenForIceCandidatesCamera(WatchCameraForm watchCameraForm)
     {
         var docRef = firestoreDb.Document($"{collectionName}/{LoginForm.User.ConnectionCode}");
         docRef.Listen(snapshot =>
@@ -115,30 +119,30 @@ public class FirestoreDbContext
             if (!snapshot.Exists)
                 return;
 
-            foreach (var field in snapshot.ToDictionary())
+            if (!snapshot.ToDictionary().ContainsKey(LoginForm.User.UserName))
+                return;
+
+            if (snapshot.ToDictionary()[LoginForm.User.UserName] is not Dictionary<string, object> userValue)
+                return;
+
+            if (!userValue.TryGetValue("ICECandidateCamera", out object iceCandidate))
+                return;
+
+            if (iceCandidate is not List<object> iceCandidateList)
+                return;
+
+            if (iceCandidateList.Count == 0)
+                return;
+
+            foreach (var item in iceCandidateList)
             {
-                if (field.Key != LoginForm.User.UserName)
-                    return;
-
-                if (field.Value is not Dictionary<string, object> userValue)
-                    return;
-
-                if (!userValue.TryGetValue("ICECandidateCamera", out object iceCandidate))
-                    return;
-
-                if (iceCandidate is not List<object> iceCandidateList)
-                    return;
-
-                if (iceCandidateList.Count == 0)
-                    return;
-
-                foreach (var item in iceCandidateList)
+                if (item is Dictionary<string, object> candidateData)
                 {
-                    if (item is Dictionary<string, object> candidateData)
+                    string jsonIceCandidate = JsonConvert.SerializeObject(candidateData);
+                    watchCameraForm.Invoke(() =>
                     {
-                        string json = JsonConvert.SerializeObject(candidateData);
-                        getCandidate(json);
-                    }
+                        watchCameraForm.webView2.CoreWebView2.ExecuteScriptAsync($"setIceCandidateFromCamera({jsonIceCandidate})");
+                    });
                 }
             }
         });

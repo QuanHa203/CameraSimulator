@@ -1,13 +1,19 @@
-﻿namespace CameraQQQ.P2PConnection;
+﻿using CameraQQQ.Client;
+
+namespace CameraQQQ.P2PConnection;
 
 [System.Runtime.InteropServices.ComVisible(true)]
 public class CallCShapFromJavaScript
 {
+    public static bool IsSetSuccessAnswer { get; set; } = false;
     public async Task SetOffer(string offer)
-        =>await FirestoreDbContext.Instance.UpdateOffer(offer);
+        => await FirestoreDbContext.Instance.UpdateOffer(offer);
 
     public async Task SetIceCandidateUser(string iceCandidate)
         => await FirestoreDbContext.Instance.UpdateCandidateUser(iceCandidate);
+
+    public void ListeningIceCandidate()
+    => IsSetSuccessAnswer = true;
 
     public void NotifyCameraConnected()
     {
@@ -16,6 +22,6 @@ public class CallCShapFromJavaScript
 
     public void NotifyCameraDisconnected()
     {
-        MessageBox.Show("Camera đã mất kết nối!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);                
+        MessageBox.Show("Camera đã mất kết nối!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
     }
 }
