@@ -42,9 +42,11 @@
             labelCameraName.BackColor = Color.Transparent;
             labelCameraName.FlatStyle = FlatStyle.Flat;
             labelCameraName.ForeColor = Color.Black;
-            labelCameraName.Location = new Point(379, 10);
+
+            labelCameraName.Location = new Point(319, 21);
+
             labelCameraName.Name = "labelCameraName";
-            labelCameraName.Size = new Size(81, 15);
+            labelCameraName.Size = new Size(101, 20);
             labelCameraName.TabIndex = 0;
             labelCameraName.Text = "Camera name";
             // 
@@ -52,13 +54,16 @@
             // 
             btnMic.BackColor = Color.Transparent;
             btnMic.BackgroundImage = Properties.Resources.micOff;
-            btnMic.BackgroundImageLayout = ImageLayout.Zoom;
+            btnMic.BackgroundImageLayout = ImageLayout.Stretch;
             btnMic.Cursor = Cursors.Hand;
             btnMic.FlatAppearance.BorderSize = 0;
             btnMic.FlatAppearance.MouseDownBackColor = Color.White;
             btnMic.FlatAppearance.MouseOverBackColor = Color.White;
             btnMic.FlatStyle = FlatStyle.Flat;
-            btnMic.Location = new Point(351, 47);
+
+            btnMic.Location = new Point(294, 67);
+
+            btnMic.Margin = new Padding(3, 4, 3, 4);
             btnMic.Name = "btnMic";
             btnMic.Size = new Size(40, 40);
             btnMic.TabIndex = 1;
@@ -75,9 +80,12 @@
             btnVolume.FlatAppearance.MouseDownBackColor = Color.White;
             btnVolume.FlatAppearance.MouseOverBackColor = Color.White;
             btnVolume.FlatStyle = FlatStyle.Flat;
-            btnVolume.Location = new Point(441, 47);
+
+            btnVolume.Location = new Point(397, 67);
+
+            btnVolume.Margin = new Padding(3, 4, 3, 4);
             btnVolume.Name = "btnVolume";
-            btnVolume.Padding = new Padding(30, 0, 30, 0);
+            btnVolume.Padding = new Padding(34, 0, 34, 0);
             btnVolume.Size = new Size(40, 40);
             btnVolume.TabIndex = 2;
             btnVolume.UseVisualStyleBackColor = false;
@@ -89,32 +97,41 @@
             panel1.Controls.Add(labelCameraName);
             panel1.Controls.Add(btnMic);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 351);
+
+            panel1.Location = new Point(0, 451);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(814, 100);
+            panel1.Size = new Size(765, 133);
+
             panel1.TabIndex = 3;
             // 
             // panelWeb
             // 
             panelWeb.Dock = DockStyle.Fill;
             panelWeb.Location = new Point(0, 0);
+            panelWeb.Margin = new Padding(3, 4, 3, 4);
             panelWeb.Name = "panelWeb";
-            panelWeb.Size = new Size(814, 351);
+
+            panelWeb.Size = new Size(765, 451);
+
             panelWeb.TabIndex = 4;
             // 
             // WatchCameraForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             BackColor = Color.White;
             BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(814, 451);
+
+            ClientSize = new Size(765, 584);
             Controls.Add(panelWeb);
             Controls.Add(panel1);
             ForeColor = Color.Transparent;
+            FormBorderStyle = FormBorderStyle.None;
+
+            Margin = new Padding(3, 4, 3, 4);
             Name = "WatchCameraForm";
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "WatchCameraForm";
             FormClosed += WatchCameraForm_FormClosed;
             Load += WatchCameraForm_Load;

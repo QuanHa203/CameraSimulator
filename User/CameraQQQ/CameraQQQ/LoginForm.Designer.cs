@@ -43,7 +43,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("MS UI Gothic", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.FromArgb(116, 86, 174);
+            label1.ForeColor = Color.FromArgb(0, 126, 249);
             label1.Location = new Point(97, 48);
             label1.Name = "label1";
             label1.Size = new Size(95, 34);
@@ -53,6 +53,7 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.ForeColor = Color.FromArgb(0, 156, 149);
             label2.Location = new Point(38, 114);
             label2.Name = "label2";
             label2.Size = new Size(89, 23);
@@ -84,6 +85,7 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.ForeColor = Color.FromArgb(0, 156, 149);
             label3.Location = new Point(38, 215);
             label3.Name = "label3";
             label3.Size = new Size(84, 23);
@@ -92,7 +94,7 @@
             // 
             // btnLogin
             // 
-            btnLogin.BackColor = Color.FromArgb(116, 36, 174);
+            btnLogin.BackColor = Color.FromArgb(0, 126, 249);
             btnLogin.Cursor = Cursors.Hand;
             btnLogin.FlatAppearance.BorderSize = 0;
             btnLogin.ForeColor = Color.White;
@@ -107,6 +109,7 @@
             // label4
             // 
             label4.AutoSize = true;
+            label4.ForeColor = Color.FromArgb(0, 156, 149);
             label4.Location = new Point(49, 417);
             label4.Name = "label4";
             label4.Size = new Size(193, 23);
@@ -117,7 +120,7 @@
             // 
             lbAcc.AutoSize = true;
             lbAcc.Cursor = Cursors.Hand;
-            lbAcc.ForeColor = Color.FromArgb(116, 86, 174);
+            lbAcc.ForeColor = Color.FromArgb(0, 126, 249);
             lbAcc.Location = new Point(84, 456);
             lbAcc.Name = "lbAcc";
             lbAcc.Size = new Size(132, 23);
@@ -129,7 +132,7 @@
             // 
             Forgot.AutoSize = true;
             Forgot.Cursor = Cursors.Hand;
-            Forgot.ForeColor = Color.FromArgb(116, 86, 174);
+            Forgot.ForeColor = Color.FromArgb(0, 126, 249);
             Forgot.Location = new Point(38, 291);
             Forgot.Name = "Forgot";
             Forgot.Size = new Size(136, 23);
@@ -141,7 +144,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.White;
+            BackColor = Color.FromArgb(46, 51, 73);
             ClientSize = new Size(300, 544);
             Controls.Add(Forgot);
             Controls.Add(lbAcc);
