@@ -17,6 +17,7 @@ import androidx.core.content.ContextCompat;
 import com.example.cameraphone.CallApi;
 import com.example.cameraphone.Camera;
 import com.example.cameraphone.R;
+import com.example.cameraphone.handleP2P.FirestoreDbContext;
 import com.google.gson.Gson;
 import okhttp3.Response;
 
@@ -85,6 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                 _camera.setConnectionCode(_camera.getConnectionCode().trim());
 
                 Toast.makeText(this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
+                FirestoreDbContext.getInstance().setDocumentConnectionCode();
                 Intent intent = new Intent(this, MainActivity.class);
                 Thread.sleep(2000);
                 this.finish();

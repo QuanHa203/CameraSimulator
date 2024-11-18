@@ -12,32 +12,51 @@ namespace CameraQQQ.Client
 {
     public partial class HomeForm : Form
     {
+        private static Panel panelRef;
         public HomeForm()
         {
             InitializeComponent();
+            panelRef = panelShow;
+            labelUserName.Text = LoginForm.User.UserName;
+            AddFormToPanel(new CameraListForm());
         }
-        private void AddFormToPanel(Form f)
+        public static void AddFormToPanel(Form f)
         {
             f.TopLevel = false;
-            pnlShow.Controls.Clear();
-            pnlShow.Controls.Add(f);
+            panelRef.Controls.Clear();
+            panelRef.Controls.Add(f);
             f.Show();
-
         }
 
-        private void panelAddCamera_Click(object sender, EventArgs e)
+        private void OpenCameraListForm_Click(object sender, EventArgs e)
         {
-
+            AddFormToPanel(new CameraListForm());
         }
 
-        private void panelWatchCamera_Click(object sender, EventArgs e)
+        private void OpenAddCameraForm_Click(object sender, EventArgs e)
         {
-            AddFormToPanel(new WatchCameraForm());
+            AddFormToPanel(new AddCameraForm());
         }
 
-        private void panelLogOut_Click(object sender, EventArgs e)
+        protected override void WndProc(ref Message m)
         {
-            this.Close();
+            const int WM_NCHITTEST = 0x84;
+            const int HTCLIENT = 0x1;
+            const int HTCAPTION = 0x2;
+
+            base.WndProc(ref m);
+
+            if (m.Msg == WM_NCHITTEST && m.Result == (IntPtr)HTCLIENT)
+            {
+                m.Result = (IntPtr)HTCAPTION; // Cho phép kéo cửa sổ
+            }
+        }
+
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            var rs = MessageBox.Show("Bạn có muốn thoát ứng dụng?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (rs == DialogResult.Yes)
+                this.Close();
         }
     }
 }

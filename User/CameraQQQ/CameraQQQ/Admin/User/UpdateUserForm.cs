@@ -1,71 +1,84 @@
 ﻿using CameraQQQ.Services;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace CameraQQQ.Admin.User
 {
-    
+
     public partial class UpdateUserForm : Form
     {
-        DataGridView dataGridView;
-        public UpdateUserForm(DataGridView dataGridView)
+        private int idUser;
+        public UpdateUserForm(int id)
         {
             InitializeComponent();
-            this.dataGridView = dataGridView;
+            idUser = id;
         }
 
-        private void btnSaveUpdate_Click(object sender, EventArgs e)
+        private void UpdateUserForm_Load(object sender, EventArgs e)
         {
-            if (dataGridView.SelectedRows.Count >= 0)
-            {
-                int userID = Convert.ToInt32(dataGridView.SelectedRows[0].Cells["Id"].Value);
-                string username = txtUpdateUser.Text;
-                string password = txtUpdatePass.Text;
-                string email = txtUpdateEmail.Text;
-                bool isBan = btnIsBan.Checked;
+            comboBoxIsBan.Items.Add("No");
+            comboBoxIsBan.Items.Add("Yes");
 
-                string url = $"CRUDUser/UpdateUser?id={userID}&name={username}&password={password}&email={email}&isBan={isBan}";
-
-                var response = SendRequestToServer.SendRequest(HttpMethod.Patch, url);
-
-                if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                {
-                    MessageBox.Show("Cập nhật thành công");
-                    RefreshUserList();
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show($"Cập nhật thất bại: {response.Data}");
-                }
-            }
-            else {
-                MessageBox.Show("Vui lòng chọn một người dùng để cập nhật.");
-            }
+            CameraQQQ.Models.User user = UserTableForm.newUsers.FirstOrDefault(u => u.Id == idUser)!;
+            txtUpdateEmail.Text = user.Email;
+            txtUpdatePass.Text = user.Password;
+            txtUpdateUser.Text = user.UserName;
+            comboBoxIsBan.SelectedIndex = user.IsBan == true ? 1 : 0;
         }
-        private void RefreshUserList()
+
+        private void btnEdit_Click(object sender, EventArgs e)
         {
-            var url = "/CRUDUser/UserList";
-            var response = SendRequestToServer.SendRequest(HttpMethod.Get, url);
+            string username = txtUpdateUser.Text;
+            string password = txtUpdatePass.Text;
+            string email = txtUpdateEmail.Text;
+            bool isBan = comboBoxIsBan.SelectedIndex == 0 ? false : true;
+
+            string url = $"CRUDUser/UpdateUser?id={idUser}&name={username}&password={password}&email={email}&isBan={isBan}";
+
+            var response = SendRequestToServer.SendRequest(HttpMethod.Patch, url);
 
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                var data = JsonConvert.DeserializeObject<List<CameraQQQ.Models.User>>(response.Data);
-                if (data != null)
+                MessageBox.Show("Cập nhật thành công");
+                var user = UserTableForm.newUsers.FirstOrDefault(u => u.Id == idUser);
+                if (user != null)
                 {
-                    dataGridView.DataSource = null;
-                    dataGridView.DataSource = data;
+                    user.UserName = username;
+                    user.Password = password;
+                    user.Email = email;
+                    user.IsBan = isBan;
                 }
+
+                this.Close();
+                DashboardForm.AddFormToPanel(new UserTableForm());
+            }
+            else
+            {
+                MessageBox.Show($"Cập nhật thất bại: {response.Data}");
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            string url = $"CRUDUser/DeleteUser?id={idUser}";
+            var response = SendRequestToServer.SendRequest(HttpMethod.Delete, url);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                MessageBox.Show(response.Data);
+
+                
+                foreach (var user in UserTableForm.newUsers)
+                {
+                    if (user.Id == idUser)
+                    {
+                        UserTableForm.newUsers.Remove(user);
+                        break;
+                    }
+                }
+                this.Close();
+                DashboardForm.AddFormToPanel(new UserTableForm());
+            }
+            else
+            {
+                MessageBox.Show(response.Data);
             }
         }
     }

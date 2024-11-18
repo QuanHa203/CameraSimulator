@@ -9,7 +9,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class CallApi  {
-    private static String serverBase = "http://192.168.110.39:5000";
+    private static String serverBase = "http://192.168.6.225:5000";
 
     public static Response onPostLoginAsync(String cameraName, String password) {
         String url = serverBase + "/api/LoginCamera/login?cameraName=" + cameraName + "&password=" + password;

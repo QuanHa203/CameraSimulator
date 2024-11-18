@@ -22,41 +22,25 @@ namespace CameraQQQ.Admin.User
         public UserTableForm()
         {
             InitializeComponent();
+
         }
 
         private void UserTableForm_Load(object sender, EventArgs e)
         {
+            dataGridViewUser.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewUser.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewUser.MultiSelect = false;
+            dataGridViewUser.AllowUserToAddRows = false;
+            dataGridViewUser.RowHeadersVisible = false;
+
+            dataGridViewUser.Columns.Add("Id", "Id");
+            dataGridViewUser.Columns.Add("IdRole", "Role");
+            dataGridViewUser.Columns.Add("UserName", "User name");
+            dataGridViewUser.Columns.Add("Password", "Password");
+            dataGridViewUser.Columns.Add("Email", "Email");
+            dataGridViewUser.Columns.Add("IsBan", "Ban");
             GetUsers();
-        }
 
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnCreate_Click(object sender, EventArgs e)
-        {
-            CreateUserForm f = new CreateUserForm(dataGridView1);
-            f.ShowDialog();
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.SelectedRows.Count > 0)
-            {
-                int userId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
-
-                var result = MessageBox.Show("Bạn có chắc chắn muốn xóa người dùng này?", "Xóa người dùng", MessageBoxButtons.YesNo);
-
-                if (result == DialogResult.Yes)
-                {
-                    DeleteUser(userId);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn một người dùng để xóa.");
-            }
         }
 
         public void GetUsers()
@@ -68,48 +52,39 @@ namespace CameraQQQ.Admin.User
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
                     newUsers = JsonConvert.DeserializeObject<List<CameraQQQ.Models.User>>(response.Data);
-                    if (newUsers != null)
-                    {
-                        dataGridView1.DataSource = newUsers;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Hiển thị thất bại");
-                    }
                 }
             }
-            else
+
+            if (newUsers != null)
             {
-                dataGridView1.DataSource = newUsers;
+                dataGridViewUser.Rows.Clear();
+                for (int i = 0; i < newUsers.Count; i++)
+                {
+                    dataGridViewUser.Rows.Add([
+                        newUsers[i].Id,
+                        newUsers[i].IdRole == 1 ? "Admin" : "Client",
+                        newUsers[i].UserName,
+                        newUsers[i].Password,
+                        newUsers[i].Email,
+                        newUsers[i].IsBan == true ? "Yes" : "No"
+                        ]);
+                }
             }
         }
 
-        public void DeleteUser(int id)
+        private void labelCreateUser_Click(object sender, EventArgs e)
         {
-            string url = $"CRUDUser/DeleteUser?id={id}";
-            var response = SendRequestToServer.SendRequest(HttpMethod.Delete, url);
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                MessageBox.Show("Xóa thành công!");
-                var data = JsonConvert.DeserializeObject<List<CameraQQQ.Models.User>>(response.Data);
-                dataGridView1.DataSource = null;
-                dataGridView1.DataSource = data;
-            }
-            else
-            {
-                MessageBox.Show("Xóa không thành công!");
-            }
+            CreateUserForm f = new CreateUserForm(dataGridViewUser);
+            DashboardForm.AddFormToPanel(f);
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        private void dataGridViewUser_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            UpdateUserForm updateUserForm = new UpdateUserForm(dataGridView1);
-            updateUserForm.ShowDialog();
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            if (e.RowIndex >= 0)
+            {
+                int id = (int)dataGridViewUser.Rows[e.RowIndex].Cells["Id"].Value;
+                DashboardForm.AddFormToPanel(new UpdateUserForm(id));
+            }
         }
     }
 }

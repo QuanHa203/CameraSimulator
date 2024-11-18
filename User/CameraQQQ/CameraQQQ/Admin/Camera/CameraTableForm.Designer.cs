@@ -31,22 +31,19 @@
             dataGridViewCamera = new DataGridView();
             labelCreateCamera = new Label();
             label1 = new Label();
-            btnExit = new Button();
             button1 = new Button();
-            btnAdd = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewCamera).BeginInit();
             SuspendLayout();
             // 
             // dataGridViewCamera
             // 
             dataGridViewCamera.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCamera.Location = new Point(12, 116);
-            dataGridViewCamera.Margin = new Padding(3, 4, 3, 4);
+            dataGridViewCamera.Location = new Point(10, 87);
             dataGridViewCamera.Name = "dataGridViewCamera";
             dataGridViewCamera.RowHeadersWidth = 51;
-            dataGridViewCamera.Size = new Size(741, 406);
+            dataGridViewCamera.Size = new Size(648, 324);
             dataGridViewCamera.TabIndex = 0;
-            dataGridViewCamera.CellClick += dataGridViewCamera_CellClick;
+            dataGridViewCamera.CellDoubleClick += dataGridViewCamera_CellDoubleClick;
             // 
             // labelCreateCamera
             // 
@@ -54,71 +51,45 @@
             labelCreateCamera.Cursor = Cursors.Hand;
             labelCreateCamera.Font = new Font("Nirmala UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelCreateCamera.ForeColor = Color.FromArgb(0, 126, 249);
-            labelCreateCamera.Location = new Point(12, 73);
+            labelCreateCamera.Location = new Point(10, 55);
             labelCreateCamera.Name = "labelCreateCamera";
-            labelCreateCamera.Size = new Size(210, 28);
+            labelCreateCamera.Size = new Size(168, 21);
             labelCreateCamera.TabIndex = 1;
             labelCreateCamera.Text = "Create a new camera";
+            labelCreateCamera.Click += labelCreateCamera_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Nirmala UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(0, 126, 249);
-            label1.Location = new Point(288, 20);
+            label1.Location = new Point(247, 9);
             label1.Name = "label1";
-            label1.Size = new Size(175, 41);
+            label1.Size = new Size(141, 32);
             label1.TabIndex = 2;
             label1.Text = "Camera list";
             // 
-            // btnExit
-            // 
-            btnExit.BackColor = Color.FromArgb(0, 156, 149);
-            btnExit.Font = new Font("Nirmala UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnExit.ForeColor = Color.White;
-            btnExit.Location = new Point(652, 529);
-            btnExit.Name = "btnExit";
-            btnExit.Size = new Size(101, 43);
-            btnExit.TabIndex = 3;
-            btnExit.Text = "Exit";
-            btnExit.UseVisualStyleBackColor = false;
-            // 
             // button1
             // 
-            button1.Location = new Point(526, 529);
+            button1.Location = new Point(460, 397);
+            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
             button1.Size = new Size(0, 0);
             button1.TabIndex = 4;
             button1.Text = "button1";
             button1.UseVisualStyleBackColor = true;
             // 
-            // btnAdd
-            // 
-            btnAdd.BackColor = Color.FromArgb(0, 156, 149);
-            btnAdd.Font = new Font("Nirmala UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAdd.ForeColor = Color.White;
-            btnAdd.Location = new Point(545, 529);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(101, 43);
-            btnAdd.TabIndex = 5;
-            btnAdd.Text = "Create";
-            btnAdd.UseVisualStyleBackColor = false;
-            btnAdd.Click += btnAdd_Click;
-            // 
             // CameraTableForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(46, 51, 73);
-            ClientSize = new Size(765, 584);
-            Controls.Add(btnAdd);
+            ClientSize = new Size(669, 438);
             Controls.Add(button1);
-            Controls.Add(btnExit);
             Controls.Add(label1);
             Controls.Add(labelCreateCamera);
             Controls.Add(dataGridViewCamera);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 4, 3, 4);
             Name = "CameraTableForm";
             Text = "CameraTableForm";
             ((System.ComponentModel.ISupportInitialize)dataGridViewCamera).EndInit();
@@ -131,8 +102,6 @@
         private DataGridView dataGridViewCamera;
         private Label labelCreateCamera;
         private Label label1;
-        private Button btnExit;
         private Button button1;
-        private Button btnAdd;
     }
 }

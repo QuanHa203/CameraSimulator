@@ -27,9 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
         webView = findViewById(R.id.webView);
 
-        LoginActivity._camera.setConnectionCode("111111111");
-        LoginActivity._camera.setCameraName("CameraTest");
-
         p2PInterface = new P2PInterface(this);
 
         initWebView();

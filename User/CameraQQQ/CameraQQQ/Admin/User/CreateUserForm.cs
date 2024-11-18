@@ -30,7 +30,7 @@ namespace CameraQQQ.Admin.User
 
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnCreate_Click(object sender, EventArgs e)
         {
             string username = txtCreateUser.Text;
             string password = txtCreatePass.Text;
@@ -47,9 +47,10 @@ namespace CameraQQQ.Admin.User
                 if (newUser != null)
                 {
                     UserTableForm.newUsers.Add(newUser);
-                    dataGridView.DataSource = null; 
+                    dataGridView.DataSource = null;
                     dataGridView.DataSource = UserTableForm.newUsers;
                     MessageBox.Show("Thêm thành công", "Thành công");
+                    DashboardForm.AddFormToPanel(new UserTableForm());
                     this.Close();
                 }
                 else

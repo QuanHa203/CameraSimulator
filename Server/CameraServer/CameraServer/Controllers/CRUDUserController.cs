@@ -9,7 +9,7 @@ namespace CameraServer.Controllers
     public class CRUDUserController : ControllerBase
     {
         private readonly CameraSimulatorContext _context;
-        public CRUDUserController(CameraSimulatorContext context) 
+        public CRUDUserController(CameraSimulatorContext context)
         {
             _context = context;
         }
@@ -22,7 +22,8 @@ namespace CameraServer.Controllers
 
         // Them nguoi dung
         [HttpPost("CreateUser")]
-        public IActionResult CreateUser(string username, string password, string email) {
+        public IActionResult CreateUser(string username, string password, string email)
+        {
             var newUser = new User
             {
                 IdRole = 2,
@@ -50,10 +51,16 @@ namespace CameraServer.Controllers
                 return BadRequest("Không tìm thấy Id người dùng");
             }
 
+            var checkName = _context.Users.Any(u => u.Id != id && u.UserName == name);
+            if (checkName) { return BadRequest("Tên người dùng này đã được sử dụng!"); }
+
+            var checkEmail = _context.Users.Any(u => u.Id != id && u.Email == email);
+            if (checkEmail) { return BadRequest("Email này đã được đăng ký!"); }
+
             user.UserName = name;
             user.Password = password;
             user.Email = email;
-            user.IsBan = isBan; 
+            user.IsBan = isBan;
 
             _context.SaveChanges();
             return Ok(user);
@@ -68,9 +75,9 @@ namespace CameraServer.Controllers
             {
                 return BadRequest("Id người dùng không tồn tại");
             }
-                _context.Users.Remove(user);
-                _context.SaveChanges();
-                return Ok("Xóa thành công");
+            _context.Users.Remove(user);
+            _context.SaveChanges();
+            return Ok("Xóa thành công");
         }
     }
 }

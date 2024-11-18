@@ -1,52 +1,36 @@
 ﻿using CameraQQQ.Admin.Camera;
-using CameraQQQ.Client;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using CameraQQQ.Admin.User;
 
 namespace CameraQQQ.Admin
 {
     public partial class DashboardForm : Form
     {
+        private static Panel panelRef = null!;
         public DashboardForm()
         {
             InitializeComponent();
             panelRef = panelShow;
         }
-        private static Panel panelRef;
+
         public static void AddFormToPanel(Form f)
         {
             f.TopLevel = false;
             panelRef.Controls.Clear();
             panelRef.Controls.Add(f);
             f.Show();
-
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void OpenCameraTable_Click(object sender, EventArgs e)
+        => AddFormToPanel(new CameraTableForm());
+
+        private void OpenUserTable_Click(object sender, EventArgs e)
+        => AddFormToPanel(new UserTableForm());
+
+        private void Exit_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void panelCamera_Click(object sender, EventArgs e)
-        {
-            AddFormToPanel(new CameraTableForm());
-        }
-
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel4_Click(object sender, EventArgs e)
-        {
-            this.Close();
+            var rs = MessageBox.Show("Bạn có muốn thoát ứng dụng?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (rs == DialogResult.Yes)
+                this.Close();
         }
     }
 }

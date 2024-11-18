@@ -11,6 +11,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cameraphone.CallApi;
 import com.example.cameraphone.R;
+import com.example.cameraphone.handleP2P.FirestoreDbContext;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.Map;
 
 import okhttp3.Response;
 
@@ -59,7 +65,11 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
-                Toast.makeText(this, responseData, Toast.LENGTH_SHORT).show();
+                Type type = new TypeToken<Map<String, String>>() {}.getType();
+                Map<String, String> connectionCode = new Gson().fromJson(responseData, type);
+                FirestoreDbContext.getInstance().createDocumentConnectionCode(connectionCode.get("connectionCode").trim());
+                Toast.makeText(this, "Đăng ký tài khoản thành công", Toast.LENGTH_SHORT).show();
+
                 Thread.sleep(2000);
                 this.finish();
             }

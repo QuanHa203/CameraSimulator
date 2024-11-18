@@ -59,15 +59,13 @@ namespace CameraQQQ.Client
         }        
         private EventHandler<CoreWebView2WebMessageReceivedEventArgs> messageReceivedHandlerPermissionState = null!;
         public WebView2 webView2 = null!;
+        public string ConnectionCode { get; private set; } = "";
 
-        public WatchCameraForm()
+        public WatchCameraForm(string connectionCode)
         {
             InitializeComponent();
-            LoginForm.User = new Models.User
-            {
-                UserName = "HaQuan",
-                ConnectionCode = "111111111"
-            };
+            ConnectionCode =connectionCode;
+
             InitWebView();
         }
 
@@ -76,8 +74,7 @@ namespace CameraQQQ.Client
             await webView2.EnsureCoreWebView2Async();
 
             // Create Object callCSharp in JS
-            webView2.CoreWebView2.AddHostObjectToScript("callCSharp", new CallCShapFromJavaScript());
-
+            webView2.CoreWebView2.AddHostObjectToScript("callCSharp", new CallCShapFromJavaScript(ConnectionCode));
 
             // Register event
             webView2.CoreWebView2.WebMessageReceived += messageReceivedHandlerPermissionState;
@@ -136,7 +133,7 @@ namespace CameraQQQ.Client
 
         private async void WatchCameraForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            await FirestoreDbContext.Instance.Disconnect();            
+            await FirestoreDbContext.Instance.Disconnect(ConnectionCode);            
             //webView2.Dispose();
         }
 

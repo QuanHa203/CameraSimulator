@@ -22,9 +22,13 @@ namespace CameraQQQ.Admin.Camera
             InitializeComponent();
             Load();
             dataGridViewCamera.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCamera.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewCamera.MultiSelect = false;
+            dataGridViewCamera.AllowUserToAddRows = false;
+            dataGridViewCamera.RowHeadersVisible = false;
         }
         public static List<CameraQQQ.Models.Camera> listCameras = null;
-       
+
         public void Load()
         {
             if (listCameras == null)
@@ -34,44 +38,26 @@ namespace CameraQQQ.Admin.Camera
 
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
-
                     listCameras = JsonConvert.DeserializeObject<List<CameraQQQ.Models.Camera>>(response.Data);
-
-                    
                 }
             }
             if (listCameras != null)
-            {
-
                 dataGridViewCamera.DataSource = listCameras;
 
-                MessageBox.Show("Dữ liệu đã được tải thành công!");
-            }
-            else
-            {
-                MessageBox.Show("Không có dữ liệu để hiển thị.");
-            }
-
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            DashboardForm.AddFormToPanel(new CreateCameraForm());
-            
-        }
+        private void labelCreateCamera_Click(object sender, EventArgs e)
+        => DashboardForm.AddFormToPanel(new CreateCameraForm());
 
-        private void dataGridViewCamera_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewCamera_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) 
+            if (e.RowIndex >= 0)
             {
-                
                 string value1 = dataGridViewCamera.Rows[e.RowIndex].Cells["Id"].Value.ToString();
                 string value2 = dataGridViewCamera.Rows[e.RowIndex].Cells["CameraName"].Value.ToString();
                 string value3 = dataGridViewCamera.Rows[e.RowIndex].Cells["Password"].Value.ToString();
                 string value4 = dataGridViewCamera.Rows[e.RowIndex].Cells["ConnectionCode"].Value.ToString();
                 DashboardForm.AddFormToPanel(new UpdateCameraForm(value1, value2, value3, value4));
-                
-                
             }
         }
     }

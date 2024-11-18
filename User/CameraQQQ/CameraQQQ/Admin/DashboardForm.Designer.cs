@@ -29,74 +29,80 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            panel4 = new Panel();
-            button2 = new Button();
-            label3 = new Label();
+            panelExit = new Panel();
+            btnExit = new Button();
+            labelExit = new Label();
             panel2 = new Panel();
             label1 = new Label();
             pictureBox1 = new PictureBox();
-            panel6 = new Panel();
-            button4 = new Button();
-            label4 = new Label();
+            panelUser = new Panel();
+            btnUser = new Button();
+            labelUser = new Label();
             panelCamera = new Panel();
-            button1 = new Button();
-            label2 = new Label();
+            btnCamera = new Button();
+            labelCamera = new Label();
             panelShow = new Panel();
             panel1.SuspendLayout();
-            panel4.SuspendLayout();
+            panelExit.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            panel6.SuspendLayout();
+            panelUser.SuspendLayout();
             panelCamera.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(24, 30, 56);
-            panel1.Controls.Add(panel4);
+            panel1.Controls.Add(panelExit);
             panel1.Controls.Add(panel2);
-            panel1.Controls.Add(panel6);
+            panel1.Controls.Add(panelUser);
             panel1.Controls.Add(panelCamera);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(186, 584);
+            panel1.Size = new Size(163, 438);
             panel1.TabIndex = 0;
             // 
-            // panel4
+            // panelExit
             // 
-            panel4.Controls.Add(button2);
-            panel4.Controls.Add(label3);
-            panel4.Location = new Point(0, 524);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(186, 60);
-            panel4.TabIndex = 7;
-            panel4.Click += panel4_Click;
-            
+            panelExit.Controls.Add(btnExit);
+            panelExit.Controls.Add(labelExit);
+            panelExit.Location = new Point(0, 393);
+            panelExit.Margin = new Padding(3, 2, 3, 2);
+            panelExit.Name = "panelExit";
+            panelExit.Size = new Size(163, 45);
+            panelExit.TabIndex = 7;
+            panelExit.Click += Exit_Click;
             // 
-            // button2
+            // btnExit
             // 
-            button2.BackColor = Color.Transparent;
-            button2.BackgroundImage = Properties.Resources.logOut;
-            button2.BackgroundImageLayout = ImageLayout.Zoom;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Location = new Point(131, 15);
-            button2.Name = "button2";
-            button2.Size = new Size(35, 35);
-            button2.TabIndex = 3;
-            button2.UseVisualStyleBackColor = false;
+            btnExit.BackColor = Color.Transparent;
+            btnExit.BackgroundImage = Properties.Resources.logOut;
+            btnExit.BackgroundImageLayout = ImageLayout.Zoom;
+            btnExit.FlatAppearance.BorderSize = 0;
+            btnExit.FlatAppearance.MouseDownBackColor = Color.FromArgb(24, 30, 56);
+            btnExit.FlatAppearance.MouseOverBackColor = Color.FromArgb(24, 30, 56);
+            btnExit.FlatStyle = FlatStyle.Flat;
+            btnExit.Location = new Point(115, 11);
+            btnExit.Margin = new Padding(3, 2, 3, 2);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new Size(31, 26);
+            btnExit.TabIndex = 3;
+            btnExit.UseVisualStyleBackColor = false;
+            btnExit.Click += Exit_Click;
             // 
-            // label3
+            // labelExit
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Nirmala UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.FromArgb(0, 126, 249);
-            label3.Location = new Point(4, 16);
-            label3.Name = "label3";
-            label3.Size = new Size(87, 28);
-            label3.TabIndex = 2;
-            label3.Text = "Log Out";
+            labelExit.AutoSize = true;
+            labelExit.Font = new Font("Nirmala UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelExit.ForeColor = Color.FromArgb(0, 126, 249);
+            labelExit.Location = new Point(4, 12);
+            labelExit.Name = "labelExit";
+            labelExit.Size = new Size(70, 21);
+            labelExit.TabIndex = 2;
+            labelExit.Text = "Log Out";
+            labelExit.Click += Exit_Click;
             // 
             // panel2
             // 
@@ -104,8 +110,9 @@
             panel2.Controls.Add(pictureBox1);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
+            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(186, 151);
+            panel2.Size = new Size(163, 113);
             panel2.TabIndex = 0;
             // 
             // label1
@@ -113,118 +120,133 @@
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(0, 156, 149);
-            label1.Location = new Point(47, 99);
+            label1.Location = new Point(41, 74);
             label1.Name = "label1";
-            label1.Size = new Size(85, 25);
+            label1.Size = new Size(69, 20);
             label1.TabIndex = 1;
             label1.Text = "Admin1";
             // 
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.moon;
-            pictureBox1.Location = new Point(34, 22);
+            pictureBox1.Location = new Point(30, 16);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(116, 63);
+            pictureBox1.Size = new Size(102, 47);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
             // 
-            // panel6
+            // panelUser
             // 
-            panel6.Controls.Add(button4);
-            panel6.Controls.Add(label4);
-            panel6.Location = new Point(0, 147);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(186, 60);
-            panel6.TabIndex = 7;
+            panelUser.Controls.Add(btnUser);
+            panelUser.Controls.Add(labelUser);
+            panelUser.Location = new Point(0, 110);
+            panelUser.Margin = new Padding(3, 2, 3, 2);
+            panelUser.Name = "panelUser";
+            panelUser.Size = new Size(163, 45);
+            panelUser.TabIndex = 7;
+            panelUser.Click += OpenUserTable_Click;
             // 
-            // button4
+            // btnUser
             // 
-            button4.BackColor = Color.Transparent;
-            button4.BackgroundImage = Properties.Resources.user;
-            button4.BackgroundImageLayout = ImageLayout.Zoom;
-            button4.FlatAppearance.BorderSize = 0;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Location = new Point(130, 15);
-            button4.Name = "button4";
-            button4.Size = new Size(35, 35);
-            button4.TabIndex = 3;
-            button4.UseVisualStyleBackColor = false;
+            btnUser.BackColor = Color.Transparent;
+            btnUser.BackgroundImage = Properties.Resources.user;
+            btnUser.BackgroundImageLayout = ImageLayout.Zoom;
+            btnUser.FlatAppearance.BorderSize = 0;
+            btnUser.FlatAppearance.MouseDownBackColor = Color.FromArgb(24, 30, 56);
+            btnUser.FlatAppearance.MouseOverBackColor = Color.FromArgb(24, 30, 56);
+            btnUser.FlatStyle = FlatStyle.Flat;
+            btnUser.Location = new Point(114, 11);
+            btnUser.Margin = new Padding(3, 2, 3, 2);
+            btnUser.Name = "btnUser";
+            btnUser.Size = new Size(31, 26);
+            btnUser.TabIndex = 3;
+            btnUser.UseVisualStyleBackColor = false;
+            btnUser.Click += OpenUserTable_Click;
             // 
-            // label4
+            // labelUser
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Nirmala UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.FromArgb(0, 126, 249);
-            label4.Location = new Point(4, 16);
-            label4.Name = "label4";
-            label4.Size = new Size(54, 28);
-            label4.TabIndex = 2;
-            label4.Text = "User";
+            labelUser.AutoSize = true;
+            labelUser.Font = new Font("Nirmala UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelUser.ForeColor = Color.FromArgb(0, 126, 249);
+            labelUser.Location = new Point(4, 12);
+            labelUser.Name = "labelUser";
+            labelUser.Size = new Size(44, 21);
+            labelUser.TabIndex = 2;
+            labelUser.Text = "User";
+            labelUser.Click += OpenUserTable_Click;
             // 
             // panelCamera
             // 
-            panelCamera.Controls.Add(button1);
-            panelCamera.Controls.Add(label2);
-            panelCamera.Location = new Point(0, 203);
+            panelCamera.Controls.Add(btnCamera);
+            panelCamera.Controls.Add(labelCamera);
+            panelCamera.Location = new Point(0, 152);
+            panelCamera.Margin = new Padding(3, 2, 3, 2);
             panelCamera.Name = "panelCamera";
-            panelCamera.Size = new Size(186, 60);
+            panelCamera.Size = new Size(163, 45);
             panelCamera.TabIndex = 7;
-            panelCamera.Click += panelCamera_Click;
+            panelCamera.Click += OpenCameraTable_Click;
             // 
-            // button1
+            // btnCamera
             // 
-            button1.BackColor = Color.Transparent;
-            button1.BackgroundImage = Properties.Resources.cameraSecurity;
-            button1.BackgroundImageLayout = ImageLayout.Zoom;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Location = new Point(131, 11);
-            button1.Name = "button1";
-            button1.Size = new Size(35, 35);
-            button1.TabIndex = 3;
-            button1.UseVisualStyleBackColor = false;
+            btnCamera.BackColor = Color.Transparent;
+            btnCamera.BackgroundImage = Properties.Resources.cameraSecurity;
+            btnCamera.BackgroundImageLayout = ImageLayout.Zoom;
+            btnCamera.FlatAppearance.BorderSize = 0;
+            btnCamera.FlatAppearance.MouseDownBackColor = Color.FromArgb(24, 30, 56);
+            btnCamera.FlatAppearance.MouseOverBackColor = Color.FromArgb(24, 30, 56);
+            btnCamera.FlatStyle = FlatStyle.Flat;
+            btnCamera.Location = new Point(115, 8);
+            btnCamera.Margin = new Padding(3, 2, 3, 2);
+            btnCamera.Name = "btnCamera";
+            btnCamera.Size = new Size(31, 26);
+            btnCamera.TabIndex = 3;
+            btnCamera.UseVisualStyleBackColor = false;
+            btnCamera.Click += OpenCameraTable_Click;
             // 
-            // label2
+            // labelCamera
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Nirmala UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.FromArgb(0, 126, 249);
-            label2.Location = new Point(4, 16);
-            label2.Name = "label2";
-            label2.Size = new Size(83, 28);
-            label2.TabIndex = 2;
-            label2.Text = "Camera";
+            labelCamera.AutoSize = true;
+            labelCamera.Font = new Font("Nirmala UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelCamera.ForeColor = Color.FromArgb(0, 126, 249);
+            labelCamera.Location = new Point(4, 12);
+            labelCamera.Name = "labelCamera";
+            labelCamera.Size = new Size(68, 21);
+            labelCamera.TabIndex = 2;
+            labelCamera.Text = "Camera";
+            labelCamera.Click += OpenCameraTable_Click;
             // 
             // panelShow
             // 
             panelShow.Dock = DockStyle.Fill;
-            panelShow.Location = new Point(186, 0);
+            panelShow.Location = new Point(163, 0);
+            panelShow.Margin = new Padding(3, 2, 3, 2);
             panelShow.Name = "panelShow";
-            panelShow.Size = new Size(764, 584);
+            panelShow.Size = new Size(668, 438);
             panelShow.TabIndex = 1;
             // 
             // DashboardForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(46, 51, 73);
-            ClientSize = new Size(950, 584);
+            ClientSize = new Size(831, 438);
             Controls.Add(panelShow);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "DashboardForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "DashboardForm";
             panel1.ResumeLayout(false);
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
+            panelExit.ResumeLayout(false);
+            panelExit.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            panel6.ResumeLayout(false);
-            panel6.PerformLayout();
+            panelUser.ResumeLayout(false);
+            panelUser.PerformLayout();
             panelCamera.ResumeLayout(false);
             panelCamera.PerformLayout();
             ResumeLayout(false);
@@ -236,15 +258,15 @@
         private Panel panel2;
         private PictureBox pictureBox1;
         private Label label1;
-        private Panel panel4;
-        private Button button2;
-        private Label label3;
-        private Panel panel6;
-        private Button button4;
-        private Label label4;
+        private Panel panelExit;
+        private Button btnExit;
+        private Label labelExit;
+        private Panel panelUser;
+        private Button btnUser;
+        private Label labelUser;
         private Panel panelCamera;
-        private Button button1;
-        private Label label2;
+        private Button btnCamera;
+        private Label labelCamera;
         private Panel panelShow;
     }
 }

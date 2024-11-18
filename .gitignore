@@ -10,4 +10,5 @@ Server/CameraServer/.vs/
 Server/CameraServer/CameraServer/bin/
 Server/CameraServer/CameraServer/obj/
 Server/CameraServer/CameraServer/appsettings.json
+Server/CameraServer/CameraServer/appsettings.Development.json
 Camera/app/google-services.json

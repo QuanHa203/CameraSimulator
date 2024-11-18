@@ -9,8 +9,11 @@ namespace CameraQQQ.Models
     public class Camera
     {
         public int Id { get; set; }
+
         public string CameraName { get; set; } = "";
+
         public string Password { get; set; } = "";
+
         public string ConnectionCode { get; set; } = "";
     }
 }

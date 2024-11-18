@@ -21,22 +21,11 @@ namespace CameraServer.Controllers
         [HttpPost]
         public IActionResult Login(string username, string password)
         {
-            List<User> users = _context.Users.ToList();
-            User user = users.FirstOrDefault(u => u.UserName == username.Trim() && u.Password == password.Trim());
+            List<User> users = _context.Users.Include(u => u.IdCameras).ToList();
+            User? user = users.FirstOrDefault(u => u.UserName == username.Trim() && u.Password == password.Trim());
+
             if (user == null)
                 return BadRequest("Sai tài khoản hoặc mật khẩu");
-
-            CameraUser cameraUser = _context.CameraUsers.Include(cU => cU.IdCameraNavigation).FirstOrDefault(cU => cU.IdUser == user.Id);
-            if (cameraUser == null)
-            {
-                return Ok(new
-                {
-                    IdRole = user.IdRole,
-                    UserName = user.UserName,
-                    Email = user.Email,
-                    IsBan = user.IsBan,
-                });
-            }
 
             var body = new
             {
@@ -44,7 +33,7 @@ namespace CameraServer.Controllers
                 UserName = user.UserName,
                 Email = user.Email,
                 IsBan = user.IsBan,
-                ConnectionCode = cameraUser.IdCameraNavigation.ConnectionCode
+                Cameras = user.IdCameras.Select(select => new { CameraName = select.CameraName, ConnectionCode = select.ConnectionCode})
             };
             return Ok(body);
 

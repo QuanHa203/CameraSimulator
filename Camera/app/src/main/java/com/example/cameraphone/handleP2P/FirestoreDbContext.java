@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import com.example.cameraphone.activity.LoginActivity;
 import com.example.cameraphone.activity.MainActivity;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
@@ -28,6 +29,13 @@ public class FirestoreDbContext {
 
     private FirestoreDbContext() {
         firestoreDb = FirebaseFirestore.getInstance();
+    }
+
+    public void createDocumentConnectionCode(String connectionCode) {
+        firestoreDb.collection("Signaling/").document(connectionCode).set(new HashMap<String, Object>());
+    }
+
+    public void setDocumentConnectionCode() {
         documentReference = firestoreDb.document("Signaling/" + LoginActivity._camera.getConnectionCode());
     }
 

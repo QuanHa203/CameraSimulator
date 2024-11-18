@@ -33,7 +33,10 @@ namespace CameraServer.Controllers
             if (checkName) { return BadRequest("Tên camera đã được sử dụng!"); }
             _context.Cameras.Add(newCamera);
             _context.SaveChanges();
-            return Ok("Đăng ký thành công!");
+            return Ok(new
+            {
+                ConnectionCode = newCamera.ConnectionCode
+            });
         }
     }
 }

@@ -37,24 +37,20 @@ namespace CameraQQQ
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 User = JsonConvert.DeserializeObject<User>(data)!;
-                User.ConnectionCode = User.ConnectionCode.Trim();
-
                 MessageBox.Show("Đăng nhập thành công");
 
                 if (User.IdRole == 1)
                 {
                     MessageBox.Show("Chào mừng admin");
                     this.Hide();
-                    new WatchCameraForm().ShowDialog();
-                    // new DashboardForm().Show();
+                    new DashboardForm().ShowDialog();
                     this.Close();
                 }
                 else if (User.IdRole == 2)
                 {
                     MessageBox.Show("Chào mừng user");
                     this.Hide();
-                    new WatchCameraForm().ShowDialog();
-                    // new HomeForm().Show();
+                    new HomeForm().ShowDialog();
                     this.Close();
                 }
             }

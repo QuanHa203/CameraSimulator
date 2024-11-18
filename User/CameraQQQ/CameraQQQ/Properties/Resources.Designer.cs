@@ -83,6 +83,26 @@ namespace CameraQQQ.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cctvCreate {
+            get {
+                object obj = ResourceManager.GetObject("cctvCreate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cctvCreate1 {
+            get {
+                object obj = ResourceManager.GetObject("cctvCreate1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_camera_40 {
             get {
                 object obj = ResourceManager.GetObject("icons8-camera-40", resourceCulture);
@@ -163,11 +183,9 @@ namespace CameraQQQ.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-
         internal static System.Drawing.Bitmap logOut {
             get {
                 object obj = ResourceManager.GetObject("logOut", resourceCulture);
-
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -205,6 +223,46 @@ namespace CameraQQQ.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap play {
+            get {
+                object obj = ResourceManager.GetObject("play", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap play1 {
+            get {
+                object obj = ResourceManager.GetObject("play1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap play2 {
+            get {
+                object obj = ResourceManager.GetObject("play2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap trash {
+            get {
+                object obj = ResourceManager.GetObject("trash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap user {
             get {
                 object obj = ResourceManager.GetObject("user", resourceCulture);
@@ -225,6 +283,16 @@ namespace CameraQQQ.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap userImg {
+            get {
+                object obj = ResourceManager.GetObject("userImg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap volumeOff {
             get {
                 object obj = ResourceManager.GetObject("volumeOff", resourceCulture);
@@ -238,6 +306,16 @@ namespace CameraQQQ.Properties {
         internal static System.Drawing.Bitmap volumeOn {
             get {
                 object obj = ResourceManager.GetObject("volumeOn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wifi {
+            get {
+                object obj = ResourceManager.GetObject("wifi", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

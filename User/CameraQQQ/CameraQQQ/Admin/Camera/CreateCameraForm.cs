@@ -40,6 +40,7 @@ namespace CameraQQQ.Admin.Camera
                 var newCamera = JsonConvert.DeserializeObject<CameraQQQ.Models.Camera>(response.Data);
                 CameraTableForm.listCameras.Add(newCamera);
                 this.Close();
+                DashboardForm.AddFormToPanel(new CameraTableForm());
             }
             else
             {

@@ -5,7 +5,7 @@ namespace CameraQQQ.Services;
 
 public class SendRequestToServer
 {
-    private static string serverApi = "http://localhost:5046/";
+    private static string serverApi = "http://192.168.6.225:5000/";
 
     /// <summary>
     /// Send Request to Server

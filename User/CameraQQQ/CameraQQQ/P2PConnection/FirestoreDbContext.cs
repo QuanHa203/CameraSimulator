@@ -11,8 +11,7 @@ public class FirestoreDbContext
     private string collectionName = "Signaling";
     private static FirestoreDbContext instance = null!;
 
-    private FirestoreDb firestoreDb = null!;
-    private DocumentReference documentReference = null!;
+    private FirestoreDb firestoreDb = null!;    
     private FirestoreChangeListener listenerAnswer = null!;
 
     public static FirestoreDbContext Instance
@@ -39,11 +38,14 @@ public class FirestoreDbContext
         Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", pathToServiceAccountKey);
 
         firestoreDb = FirestoreDb.Create(projectId);
-        documentReference = firestoreDb.Document($"{collectionName}/{LoginForm.User.ConnectionCode}");
+        //documentReference = firestoreDb.Document($"{collectionName}/{LoginForm.User.ConnectionCode}");
+        
     }
 
-    public async Task UpdateOffer(string offer)
+    public async Task UpdateOffer(string offer, string connectionCode)
     {
+        DocumentReference documentReference = firestoreDb.Document($"{collectionName}/{connectionCode}");
+
         Offer offerJson = JsonConvert.DeserializeObject<Offer>(offer)!;
         Dictionary<string, object> updateOffer = new();
         updateOffer.Add($"{LoginForm.User.UserName}.Offer", new
@@ -55,8 +57,10 @@ public class FirestoreDbContext
         await documentReference.UpdateAsync(updateOffer);
     }
 
-    public async Task UpdateCandidateUser(string candidate)
+    public async Task UpdateCandidateUser(string candidate, string connectionCode)
     {
+        DocumentReference documentReference = firestoreDb.Document($"{collectionName}/{connectionCode}");
+
         Dictionary<string, object> updateCandidate = new();
         var jsonCandidate = JsonConvert.DeserializeObject<Dictionary<string, object>>(candidate);
         try
@@ -74,7 +78,8 @@ public class FirestoreDbContext
 
     public void ListenForAnswerFromCameraChange(WatchCameraForm watchCameraForm)
     {
-        var docRef = firestoreDb.Document($"{collectionName}/{LoginForm.User.ConnectionCode}");
+        //var docRef = firestoreDb.Document($"{collectionName}/{LoginForm.User.ConnectionCode}");
+        var docRef = firestoreDb.Document($"{collectionName}/{watchCameraForm.ConnectionCode}");
         listenerAnswer = docRef.Listen(async (snapshot) =>
         {
             if (!snapshot.Exists)
@@ -113,7 +118,8 @@ public class FirestoreDbContext
 
     public void ListenForIceCandidatesCamera(WatchCameraForm watchCameraForm)
     {
-        var docRef = firestoreDb.Document($"{collectionName}/{LoginForm.User.ConnectionCode}");
+        //var docRef = firestoreDb.Document($"{collectionName}/{LoginForm.User.ConnectionCode}");
+        var docRef = firestoreDb.Document($"{collectionName}/{watchCameraForm.ConnectionCode}");
         docRef.Listen(snapshot =>
         {
             if (!snapshot.Exists)
@@ -148,8 +154,10 @@ public class FirestoreDbContext
         });
     }
 
-    public async Task Disconnect()
+    public async Task Disconnect(string connectionCode)
     {
+        DocumentReference documentReference = firestoreDb.Document($"{collectionName}/{connectionCode}");
+
         Dictionary<string, object> disconnectValue = new();
         disconnectValue.Add($"{LoginForm.User.UserName}.Offer", new { });
         disconnectValue.Add($"{LoginForm.User.UserName}.Answer", new { });
